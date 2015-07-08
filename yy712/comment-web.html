@@ -1,0 +1,221 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Fanily 分享你</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <script src='//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
+    <script type="text/javascript" src="js/jquery.countdown.min.js"></script>
+    <script src='js/cookie.min.js'></script>
+    <!--[if lt IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.js"></script>
+    <![endif]-->
+        <script>
+(function(w, undefined){
+  var p = (function(qs) {
+      qs = qs.split("+").join(" ");
+      var p = {}, t,
+          re = /[?&]?([^=]+)=([^&]*)/g;
+      while (t = re.exec(qs)) {
+          p[decodeURIComponent(t[1])]
+              = decodeURIComponent(t[2]);
+      }
+      return p;
+  })(w.location.search);
+  w.videoId=p['id']||'';
+  w.token=p['token']||'';
+})(this);
+    </script>
+</head>
+<body style="background: transparent;">
+<script>
+(function(window, undefined){
+    var $ = window.jQuery
+      , getComment = function(offset, callback){
+            var api = 'http://comment-api.fanily.com.tw/comment?video_id=' + window.videoId
+              ;
+            offset = offset || '';
+            callback = callback || function(){};
+            $.getJSON(api + '&offset=' + offset).done(function(data){
+                if (data.error == '' && data.status == 200) {
+                    if (data.offset != '') {
+                        nextOffset = data.offset;
+                    }
+                    if (data.comments.length > 0) {
+                        $.each(data.comments, function(k,v){
+                            if (!commentCache.hasOwnProperty(v.comment_id)) {
+                                commentCache[v.comment_id] = v;
+                                commentList.push(v.comment_id);
+                            }
+                        });
+                        commentList.sort(function(a,b){
+                            return commentCache[b].timestamp - commentCache[a].timestamp;
+                        });
+                    }
+                }
+            }).done(renderComment).done(callback);
+        }
+      , renderComment = function(){
+            var p = $('.comment-list')
+              , c = p.find('.comment')
+              , i
+              , html = ''
+              ;
+            i = 0;
+            firstID = c.eq(0).attr('id');
+            $.each(commentList, function(k,v){
+                var vv = commentCache[v];
+                html += '<div class="comment" id="'+v+'"> <span class="author"> <img src="'+vv.avatar+'" /> <span>'+vv.display_name+'</span> </span> 說：<span class="date">'+vv.time+'</span> <p>'+vv.content+'</p></div>'
+            });
+            p.html(html);
+            if (commentList[0] && firstID != commentList[0]) {
+                $(window).scrollTop(0);
+            }
+        }
+      , commentCache = {}
+      , commentList = []
+      , nextOffset = ''
+      , firstID = ''
+      , authToken = ''
+      , loginfb = function(){
+        var link = 'http://comment-api.fanily.com.tw/fb?return_url=' + encodeURIComponent(window.top.location);
+        window.top.location.href = link;
+      }
+      , login = function(account, password) {
+            if (account == '') {
+                alert('請輸入帳號');
+                return;
+            }
+            if (password == '') {
+                alert('請輸入密碼');
+                return;
+            }
+            $.post('http://comment-api.fanily.com.tw/token',
+                {account: account, password: password}).done(function(data){
+                    console.log(data);
+                    if (data.error) {
+                        alert('系統錯誤');
+                        return;
+                    }
+                    authToken = data.token;
+                    $('#comment-for-home label').attr('for', 'section-control-form');
+                    $('#section-control-form').click();
+                }).fail(function(){
+                    alert('帳號密碼錯誤');
+                    $('#password').val('');
+                });
+        }
+      , send = function(content) {
+            if (content == '') {
+                alert('請輸入回應內容');
+                return ;
+            }
+            $.post('http://comment-api.fanily.com.tw/comment', {
+                content:content,
+                token: authToken,
+                video_id: window.videoId}).done(function(data){
+                    if (data.token) {
+                        authToken = data.token;
+                    }
+                $('.comment-message').val('');
+                $(window).scrollTop();
+                $('#section-control-home').click();
+            });
+        }
+      ;
+    $(function(){
+        $('input[name="section-control"]:radio').change(function() {
+            var id = $('input[name="section-control"]:checked').attr("id");
+            if (id == 'section-control-home') {
+                $('.comment-form').css('height', '50px');
+                $('.comment-list').css('padding-bottom', '40px');
+                $('#account').val('');
+                $('#password').val('');
+            } else if (id == 'section-control-login') {
+                $('.comment-form').css('height', '110px');
+                $('.comment-list').css('padding-bottom', '100px');
+                $('#account').focus();
+            } else if (id == 'section-control-form') {
+                $('.comment-form').css('height', '100px');
+                $('.comment-list').css('padding-bottom', '100px');
+            }
+        });
+        $('#fblogin').click(function(){
+            loginfb();
+        });
+        $('#login').click(function(){
+            var account = $('#account').val();
+            var password = $('#password').val();
+            login(account, password);
+        });
+        $('#comment-send').click(function(){
+            var content = $('.comment-message').val();
+            send(content);
+        });
+        setTimeout(function(){
+            getComment('', function(data){
+                if (data.offset != '') {
+                    getComment(data.offset, arguments.callee);
+                }
+            });
+            setTimeout(arguments.callee, 3000);
+        }, 3000);
+    });
+    if (window.localStorage.getItem('token')) {
+        authToken = window.localStorage.getItem('token');
+        $(function(){
+            $('#comment-for-home label').attr('for', 'section-control-form');
+            $('#section-control-form').click();
+        });
+    }
+})(this);
+</script>
+<div id="wrapper">
+    <div id="cover">
+        <div id="clock"></div>
+    </div>
+<script type="text/javascript">
+(function(window, undefined){
+var $ = window.jQuery;
+    $('#clock').countdown('2015/07/12 12:30 UTC+8', function(event) {
+        $(this).html(event.strftime('%D天 %H:%M:%S'));
+    });
+})(this);
+</script>
+    <!-- <div class="comment-refresh">
+        <div class="teardrop"><div></div></div>
+    </div> -->
+    <div class="comment-list"></div>
+    <div class="comment-form">
+        <input type="radio" name="section-control" id="section-control-home" value="0" checked="checked">
+        <section id="comment-for-home">
+            <label for="section-control-login">登入發表回應</label>
+        </section>
+
+        <input type="radio" name="section-control" id="section-control-login" value="1">
+        <section id="comment-for-login"><div class="login-form">
+            <div class="input">
+                <lable for="account">帳號：</lable><br>
+                <input type="text" name="account" id="account" placeholder="請輸入帳號">
+            </div>
+            <div class="input">
+                <lable for="password">密碼：</lable><br>
+                <input type="password" name="password" id="password" placeholder="請輸入密碼">
+            </div>
+            <label for="section-control-home" class="btnl">取消</label>
+            <a href="http://www.fanily.com.tw/member/join" target="_blank" class="btn">註冊</a>
+            <bottom type="button" class="btnr" id="login">登入</bottom>
+            <bottom type="bottom" class="btnr" id="fblogin">FB登入</a>
+        </div></section>
+
+        <input type="radio" name="section-control" id="section-control-form" value="2">
+        <section id="comment-for-form">
+            <input class="comment-message" type="text" placeholder="說些什麼">
+            <label for="section-control-home" class="btnl">取消</label>
+            <bottom type="button" class="btnr" id="comment-send">送出</bottom>
+        </section>
+    </div>
+</div>
+</body>
+</html>
