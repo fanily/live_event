@@ -1,46 +1,5 @@
 <html>
 <head>
-<<<<<<< HEAD
-	<meta charset="UTF-8">
-	<title>Fanily 分享你</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-	<link rel="stylesheet" type="text/css" href="css/normalize.css" />
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
-	<link rel="stylesheet" type="text/css" href="css/flipclock.css" />
-    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
-	<script type="text/javascript" src="js/flipclock.min.js"></script>
-	<!--[if lt IE 9]>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.js"></script>
-	<![endif]-->
-    <style>
-#cover {
-    background: rgba(0,0,0,0.8);
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    text-align: center;
-    line-height: 100%;
-}
-#clock {
-    display: inline-block;
-    width: auto;
-    margin: 0;
-    height: 100px;
-    top: 50%;
-    margin-top: -50px;
-}
-#clock .flip-clock-label {
-    color: #FFF;
-}
-    </style>
-</head>
-<body style="overflow: hidden;">
-	<div class="toolbar">
-		<h1 class="logo"><a href="//www.fanily.tw"><img src="img/logo.png" ><span>Fanily分享你</span></a></h1>
-		<h2>閱樂沙龍：男言之隱，打通對方的有口難言！</h2>
-=======
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Fanily TV-7/12閱樂沙龍，現場直播</title>
@@ -59,6 +18,25 @@
 	<!--[if lt IE 9]>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.js"></script>
 	<![endif]-->
+    <script>
+(function(w, undefined){
+  var p = (function(qs) {
+      qs = qs.split("+").join(" ");
+      var p = {}, t,
+          re = /[?&]?([^=]+)=([^&]*)/g;
+      while (t = re.exec(qs)) {
+          p[decodeURIComponent(t[1])]
+              = decodeURIComponent(t[2]);
+      }
+      return p;
+  })(w.location.search);
+  w.videoId='D8eKgsjmm7s';
+  if (p['token']) {
+    w.localStorage.setItem("token", p['token']);
+    w.location.href = w.top.location.origin + w.top.location.pathname;
+  }
+})(window);
+    </script>
 	<script>
 	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -74,46 +52,16 @@
 	<div class="toolbar">
 		<h1 class="logo"><a href="//www.fanily.tw"><span>Fanily分享你</span></a></h1>
 		<h2>Fanily TV - LIVE互動節目-閱樂沙龍 男言之隱  2015年7月12日 12:30準時開播</h2>
->>>>>>> ea48f473baa4a0c7ad1e3b6f05e9f343dbae9d23
 	</div>
 	<div class="container">
 		<div class="live"><div class="live-inner">
 			<script>
-<<<<<<< HEAD
-				document.write('<iframe width="640" height="360" src="https://www.youtube.com/embed/qOYUWcUgq5E" frameborder="0"></iframe>')
-=======
 				// document.write('<iframe width="640" height="360" src="https://www.youtube.com/embed/lXHVCCKWLBc?list=PL3bzAQoBdsRrauVyhWl6RguwsyNN1YSwt&autoplay=1&loop=1" frameborder="0"></iframe>');
 				document.write('<iframe width="640" height="360" src="https://www.youtube.com/embed/D8eKgsjmm7s?autoplay=1" frameborder="0"></iframe>');
->>>>>>> ea48f473baa4a0c7ad1e3b6f05e9f343dbae9d23
 			</script>
 		</div></div>
 		<div class="comment-div"><div class="comment-inner">
 			<script>
-<<<<<<< HEAD
-				document.write('<iframe src="comment-web.html?id=qOYUWcUgq5E" frameborder="0"></iframe>')
-			</script>
-		</div></div>
-        <div id="cover">
-        <div id="clock"></div>
-        </div>
-	</div>
-    <script type="text/javascript">
-(function(window, undefined){
-var $ = window.jQuery;
-var t = new Date('2015/07/12 12:30 UTC+8') / 1000 | 0;
-var n = new Date() / 1000 | 0;
-var o = {
-    clockFace: 'DailyCounter',
-    countdown: true,
-    showSeconds: true
-};
-if (t-n < 86400) {
-    o.clockFace = 'HourlyCounter';
-}
-var clock = $('#clock').FlipClock(t-n, o);
-})(this);
-    </script>
-=======
 				document.write('<iframe src="comment-web.html?id=D8eKgsjmm7s" frameborder="0"></iframe>');
 			</script>
 		</div></div>
@@ -128,6 +76,5 @@ var clock = $('#clock').FlipClock(t-n, o);
 // 	});
 // })(this);
 // 	</script>
->>>>>>> ea48f473baa4a0c7ad1e3b6f05e9f343dbae9d23
 </body>
 </html>
