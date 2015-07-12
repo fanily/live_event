@@ -1,0 +1,75 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Fanily 分享你</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+	<link rel="stylesheet" type="text/css" href="css/flipclock.css" />
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="js/flipclock.min.js"></script>
+	<!--[if lt IE 9]>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.js"></script>
+	<![endif]-->
+    <style>
+#cover {
+    background: rgba(0,0,0,0.8);
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;
+    line-height: 100%;
+}
+#clock {
+    display: inline-block;
+    width: auto;
+    margin: 0;
+    height: 100px;
+    top: 50%;
+    margin-top: -50px;
+}
+#clock .flip-clock-label {
+    color: #FFF;
+}
+    </style>
+</head>
+<body style="overflow: hidden;">
+	<div class="toolbar">
+		<h1 class="logo"><a href="//www.fanily.tw"><img src="img/logo.png" ><span>Fanily分享你</span></a></h1>
+		<h2>閱樂沙龍：男言之隱，打通對方的有口難言！</h2>
+	</div>
+	<div class="container">
+		<div class="live"><div class="live-inner">
+			<script>
+				document.write('<iframe width="640" height="360" src="https://www.youtube.com/embed/qOYUWcUgq5E" frameborder="0"></iframe>')
+			</script>
+		</div></div>
+		<div class="comment-div"><div class="comment-inner">
+			<script>
+				document.write('<iframe src="comment-web.html?id=qOYUWcUgq5E" frameborder="0"></iframe>')
+			</script>
+		</div></div>
+        <div id="cover">
+        <div id="clock"></div>
+        </div>
+	</div>
+    <script type="text/javascript">
+(function(window, undefined){
+var $ = window.jQuery;
+var t = new Date('2015/07/12 12:30 UTC+8') / 1000 | 0;
+var n = new Date() / 1000 | 0;
+var o = {
+    clockFace: 'DailyCounter',
+    countdown: true,
+    showSeconds: true
+};
+if (t-n < 86400) {
+    o.clockFace = 'HourlyCounter';
+}
+var clock = $('#clock').FlipClock(t-n, o);
+})(this);
+    </script>
+</body>
+</html>
