@@ -559,14 +559,6 @@ a:hover {
   .live .live-inner iframe {
 	height: 72%;
   }
-
-  .comment-div {
-	display: none;
-  }
-
-  #cover {
-	display: none;
-  }
 }
 @media only screen and (max-device-width: 780px) and (orientation: landscape) {
   .container {
@@ -577,11 +569,4 @@ a:hover {
 	height: 80%;
   }
 
-  .comment-div {
-	display: none;
-  }
-
-  #cover {
-  display: none;
-  }
 }
