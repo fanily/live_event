@@ -384,14 +384,21 @@ a:hover {
 	height: 30px;
   }
   .toolbar h2 {
-	display: inline-block;
-	float: left;
-	font-size: 14px;
+	display: block;
+	font-size: 16px;
+  font-weight:bold;
 	margin-bottom: 0px;
-	margin: 0 8px;
+	margin: 0;
 	line-height: 24px;
-	width: 94%;
+	width: 100%;
 	height: auto;
+  text-align:center;
+   span{
+     display:block;
+      width:100%;
+      text-align:center;
+      font-size:12px;
+    }
   }
 
   .container {
@@ -563,10 +570,22 @@ a:hover {
 @media only screen and (max-device-width: 780px) and (orientation: landscape) {
   .container {
 	padding-top: 60px;
+    .comment-div{
+      height:80vh; 
+    }
   }
 
+  .toolbar{
+    position:absolute;
+    h2{
+      font-size:20px;
+      span{
+        font-size:16px;
+      }
+    }
+  }
   .live .live-inner iframe {
-	height: 80%;
+	height: 80vh;
   }
 
 }
