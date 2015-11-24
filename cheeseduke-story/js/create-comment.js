@@ -1,46 +1,60 @@
+var get_comment = function(offset){
+  //set default value for offset
+  offset = typeof offset !== undefined ? 0 : offset;
+  var api_url = "https://denny.fanily.tw/post/11e58e954b72daf4ac5d42010af020f7/comment?offset=" + offset.toString();
+
+  //get comment using ajax 
+  $.ajax({
+    url: api_url,
+    type: "GET",
+    dataType: "text"
+  }).done(function(output){
+    //render comment  
+    var comment_list = Json.parse(output);
+    var last_comment = $(".comment-list").last().find(".id").text();
+    var comment_flag = false;
+    var same_comment = 0;
+    //check if there are the same comments in the comment list 
+    for( var key in comment_list ){
+      var current_comment = comment_list[key];
+      if( comment_list[key].id i === last_comment && comment_flag === false ){
+          same_comment = key;
+          comment_flag = true;
+      }
+    }
+    if( comment_flag === true ){
+        for( var i = same_comment; i < 19 ; i++ ){
+          var comment = $("#comment-template").clone();
+          comment.find(".id").text(comment_list[i].id);
+          comment.find(".author img").attr("src", comment_list[i].comment_avatar);
+          comment.find(".author span").text(comment_list[i].comment_author);
+          comment.find("p").text(comment_list[i].comment_content);
+          comment.find(".date").text(comment_list[i].show_date);
+          comment.show();
+          $(".comment-list").append(comment);
+        }
+    }else{
+        for( var i = 0; i < 19 ; i++ ){
+          var comment = $("#comment-template").clone();
+          comment.find(".id").text(comment_list[i].id);
+          comment.find(".author img").attr("src", comment_list[i].comment_avatar);
+          comment.find(".author span").text(comment_list[i].comment_author);
+          comment.find("p").text(comment_list[i].comment_content);
+          comment.find(".date").text(comment_list[i].show_date);
+          comment.show();
+          $(".comment-list").append(comment);
+        }
+    }
+  });  
+}
+
+var fb_login = function(){
+
+}
+
+
 (function(window, undefined){
     var $ = window.jQuery
-      , getComment = function(offset, callback){
-            var api = 'http://comment-api.fanily.com.tw/comment?video_id=' + window.videoId
-              ;
-            offset = offset || '';
-            callback = callback || function(){};
-            $.getJSON(api + '&offset=' + offset).done(function(data){
-                if (data.error == '' && data.status == 200) {
-                    if (data.offset != '') {
-                        nextOffset = data.offset;
-                    }
-                    if (data.comments.length > 0) {
-                        $.each(data.comments, function(k,v){
-                            if (!commentCache.hasOwnProperty(v.comment_id)) {
-                                commentCache[v.comment_id] = v;
-                                commentList.push(v.comment_id);
-                            }
-                        });
-                        commentList.sort(function(a,b){
-                            return commentCache[b].timestamp - commentCache[a].timestamp;
-                        });
-                    }
-                }
-            }).done(renderComment).done(callback);
-        }
-      , renderComment = function(){
-            var p = $('.comment-list')
-              , c = p.find('.comment')
-              , i
-              , html = ''
-              ;
-            i = 0;
-            firstID = c.eq(0).attr('id');
-            $.each(commentList, function(k,v){
-                var vv = commentCache[v];
-                html += '<div class="comment" id="'+v+'"> <span class="author"> <img src="'+vv.avatar+'" /> <span>'+vv.display_name+'</span> </span> 說：<span class="date">'+vv.time+'</span> <p>'+vv.content+'</p></div>'
-            });
-            p.html(html);
-            if (commentList[0] && firstID != commentList[0]) {
-                $(window).scrollTop(0);
-            }
-        }
       , commentCache = {}
       , commentList = []
       , nextOffset = ''

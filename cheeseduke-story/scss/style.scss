@@ -162,27 +162,33 @@ a:hover {
 .comment {
   padding: 5px;
   line-height: 25px;
-}
-.comment .author {
-  display: inline-block;
-}
-.comment .author img {
-  vertical-align: middle;
-  max-height: 25px;
-  max-width: 25px;
-}
-.comment .author span {
-  color: #F80;
-  display: inline-block;
-}
-.comment .date {
-  display: inline-block;
-  float: right;
-  font-size: 13px;
-  color: #CCC;
-}
-.comment p {
-  margin: 0 0 10px;
+  .author{ 
+    img {
+      vertical-align: middle;
+      max-height: 25px;
+      max-width: 25px;
+    }
+    span {
+      color: #F80;
+      display: inline-block;
+    }
+
+  }
+  .date {
+    display: inline-block;
+    float: right;
+    font-size: 13px;
+    color: #CCC;
+  }
+  p {
+   margin: 0 0 10px;
+  }
+  .id{
+    display:none;
+  }
+  &#comment-template{
+    display:none;
+  }
 }
 
 .comment::after {

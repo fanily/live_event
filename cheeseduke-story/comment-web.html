@@ -16,35 +16,48 @@
     <script src="js/create-comment.js"></script>
 </head>
 <body style="background: transparent;">
-<section id="comment-for-login"><div class="login-form">
-            <div class="input">
-                <label for="account">帳號：</label><br>
-                <input type="text" name="account" id="account" placeholder="請輸入帳號">
-            </div>
-            <div class="input">
-                <label for="password">密碼：</label><br>
-                <input type="password" name="password" id="password" placeholder="請輸入密碼">
-            </div>
-            <button onclick='window.location.href="http://www.fanily.com.tw/member/join"' class="btn">註冊</button>
-            <button type="button" class="btn" id="login">登入</button>
-            <button type="button" class="btn" id="fblogin">FB登入</button>
-        </div></section>
-<div id="wrapper">
-    <div class="comment-form">
-        <input type="radio" name="section-control" id="section-control-home" value="0" checked="checked">
-        <section id="comment-for-home">
-            <label for="section-control-login">登入發表回應</label>
-        </section>
-
-        <input type="radio" name="section-control" id="section-control-login" value="1">
-        
-        <input type="radio" name="section-control" id="section-control-form" value="2">
-        <section id="comment-for-form">
-            <input class="comment-message" type="text" placeholder="說些什麼">
-            <label for="section-control-home" class="btnl">取消</label>
-            <button type="button" class="btnr" id="comment-send">送出</button>
-        </section>
+  <section id="comment-for-login">
+    <div class="login-form">
+      <div class="input">
+        <label for="account">帳號：</label><br>
+        <input type="text" name="account" id="account" placeholder="請輸入帳號">
+      </div>
+      <div class="input">
+        <label for="password">密碼：</label><br>
+        <input type="password" name="password" id="password" placeholder="請輸入密碼">
+      </div>
+      <button onclick='window.location.href="http://www.fanily.com.tw/member/join"' class="btn">註冊</button>
+      <button type="button" class="btn" id="login">登入</button>
+      <button type="button" class="btn" id="fblogin">Facebook</button>
     </div>
-</div>
+  </section>
+  <div id="wrapper">
+    <div class="comment-list">
+      <div class="comment" id="comment-template">
+        <div class="author">
+          <img src="#"/>
+          <span class="comment-author"></span>
+        </div>
+        <p class="comment-content"></p>
+        <span class="date"></span>
+        <span class="id"></span>
+      </div>
+    </div>
+    <div class="comment-form">
+      <input type="radio" name="section-control" id="section-control-home" value="0" checked="checked">
+      <section id="comment-for-home">
+        <label for="section-control-login">登入發表回應</label>
+      </section>
+
+      <input type="radio" name="section-control" id="section-control-login" value="1">
+        
+      <input type="radio" name="section-control" id="section-control-form" value="2">
+      <section id="comment-for-form">
+         <input class="comment-message" type="text" placeholder="說些什麼">
+         <label for="section-control-home" class="btnl">取消</label>
+         <button type="button" class="btnr" id="comment-send">送出</button>
+       </section>
+    </div>
+  </div>
 </body>
 </html>
