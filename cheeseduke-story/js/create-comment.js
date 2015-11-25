@@ -1,8 +1,7 @@
 var get_comment = function(offset){
   //set default value for offset
   offset = typeof offset !== undefined ? 0 : offset;
-  var api_url = "https://denny.fanily.tw/post/11e58e954b72daf4ac5d42010af020f7/comment?offset=" + offset.toString();
-
+  var api_url = config.get_comment_url + offset.toString();
   //get comment using ajax 
   $.ajax({
     url: api_url,
@@ -41,7 +40,7 @@ var get_comment = function(offset){
 }
 
 var init_comment = function(){
-  var api_url = "https://denny.fanily.tw/post/11e58e954b72daf4ac5d42010af020f7/comment?offset=0";
+  var api_url = config.init_commet_url;
   $.ajax({
     url:api_url,
     type:"GET",
@@ -76,7 +75,7 @@ var normal_login = function(account , password){
       type:"POST",
       data:{"account":account , "password":password},
       dataType:"json",
-      url:"https://denny.fanily.tw/auth/login",
+      url: config.login_url,
       xhrFields: {
        withCredentials: true
       }
@@ -94,7 +93,7 @@ var send_message = function(content){
       return ;
    }
   $.ajax({
-    url:"https://denny.fanily.tw/post/11e58e954b72daf4ac5d42010af020f7/comment",
+    url:config.send_url,
     data:{"message":content},
     type:"POST",
     xhrFields: {

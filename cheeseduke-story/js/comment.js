@@ -2,15 +2,18 @@ jQuery(function(){
   init_comment();
   // check login status
    $.ajax({
-     url: "https://m-denny.fanily.tw/auth/autologin",
+     url: config.status_url,
      type: "POST",
-     datatype: "json",
+     datatype: "text",
      async : false,
      xhrFields: {
        withCredentials: true
      }
    }).done(function(output){
-       if( output.login ){
+     console.log(output);
+     var result = JSON.parse(output);
+     console.log(result);
+     if( result.acl ){
            $("#comment-for-login").hide();
            $("#session-login").attr("checked", "checked");
            $("#comment-for-form").show(function(){
@@ -21,11 +24,11 @@ jQuery(function(){
        } 
    });
    // fb login
-  $('#facebook-login').click(function(e){
+  $('#fblogin').click(function(e){
   		e.preventDefault();
   		FB.login(function(response) {
   			if (response.authResponse) {
-  				window.location.replace('https://www.fanily.tw/auth/fblogin');
+            window.location.replace(config.fb_login_url);
   			} else {
   				$('div.error-message').html('<div class="bg-danger">取得 Facebook 授權失敗。</div>');
   			}
