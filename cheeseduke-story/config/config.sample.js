@@ -1,4 +1,4 @@
-var target_url = "https://denny.fanily.tw";
+var target_url = "https://www.fanily.tw";
 var post_id = "11e58e954b72daf4ac5d42010af020f7";
 var config ={
   "start_time" : "2015/11/27 12:00",
