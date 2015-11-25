@@ -44,20 +44,13 @@
       </div>
     </div>
     <div class="comment-form">
-      <input type="radio" name="section-control" id="section-control-home" value="0" checked="checked">
-      <section id="comment-for-home">
-        <label for="section-control-login">登入發表回應</label>
-      </section>
-
-      <input type="radio" name="section-control" id="section-control-login" value="1">
-        
-      <input type="radio" name="section-control" id="section-control-form" value="2">
-      <section id="comment-for-form">
+      <input type="radio" id="session-login" name="section-control"/>
+       <section id="comment-for-form">
          <input class="comment-message" type="text" placeholder="說些什麼">
-         <label for="section-control-home" class="btnl">取消</label>
          <button type="button" class="btnr" id="comment-send">送出</button>
        </section>
     </div>
   </div>
+  <script src="js/fbsdk.js"></script>
 </body>
 </html>
