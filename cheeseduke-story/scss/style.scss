@@ -69,56 +69,69 @@ a:hover {
 }
 
 .container {
+  width:100vw;
   padding-top: 63px;
   margin-bottom: 20px;
   display: -webkit-flex;
   display: flex;
   margin: 0 auto;
   height:100vh;
+  .notification{
+    position:absolute;
+    width:100%;
+    bottom:0;
+    text-align:center;
+    left:0;
+    a{
+      color:#F80;
+    }
+  }
 }
 
 .live {
   position:relative;
   -webkit-flex: 2;
   flex: 2;
-  height:100%;
+  height:90%;
+  .live-inner {
+    height: 100%;
+    position:relative;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+     iframe {
+      width: 95%;
+      height: 100%;
+    }
+  }
 }
-.live .live-inner {
-  height: 90%;
-  position:relative;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-}
-.live .live-inner iframe {
-  width: 95%;
-  height: 95%;
-}
+
 
 .comment-div {
   -webkit-flex: 1;
   flex: 1;
   position: relative;
-  height:100%;
-}
-.comment-div .comment-inner {
-  height: 90%;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  position:relative;
-}
-.comment-div iframe {
-  border: none;
-  width: 95%;
-  height: 95%;
-  background: #FFF;
+  height:90%;
+   .comment-inner {
+    height: 100%;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    position:relative;
+    iframe {
+      border: none;
+      width: 95%;
+      height: 100%;
+      background: #FFF;
+    }
+
+  }
 }
 
 .comment-refresh {
@@ -140,17 +153,16 @@ a:hover {
   position: relative;
   cursor: pointer;
   opacity: 0.5;
-}
+  > div {
+    display: inline-block;
+    margin-top: 3px;
+    width: 16px;
+    height: 16px;
+    opacity: 1;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAH1gAAB9YBOYijBAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAEeSURBVDiNldOhSkRREAbg76hsMgkKGxZEsJgEQbt5u3GLWPYJxLRvsEGrGIQNBrGYTC4W0eBL3CKIwUW0HIPnwtnr3asemDIz/z9n/pkRY9RkWMcNFmvjM0AtbOEAx4gY15FUgfM4xHsCVW1cJViQXgihjUvsmP1efniy6tdZpWccYRd7yXeFVm0L2M/Ad1jOiFdxXgfOCR4S+A1rv02mopsWPhLBxX/AMUZz2Egk8NggYCn2ZgjhLIRwGkJYgXbW//APXx5m+e3SWSTHE0IDOKSciCIXcZSx9hsI+lneKCfo4DUFPjHIx5Y0GqRYTLmdqVVGz/TaTnCbbFKJ9WbdQjfTo84KdHNMKJchG9NS6nXb90WW473HSYxx6h6+ANGwjejPCy2FAAAAAElFTkSuQmCC3fec01980cde9d9467a6a0f011f0d5e6');
+  }
 
-.teardrop > div {
-  display: inline-block;
-  margin-top: 3px;
-  width: 16px;
-  height: 16px;
-  opacity: 1;
-  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAH1gAAB9YBOYijBAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAEeSURBVDiNldOhSkRREAbg76hsMgkKGxZEsJgEQbt5u3GLWPYJxLRvsEGrGIQNBrGYTC4W0eBL3CKIwUW0HIPnwtnr3asemDIz/z9n/pkRY9RkWMcNFmvjM0AtbOEAx4gY15FUgfM4xHsCVW1cJViQXgihjUvsmP1efniy6tdZpWccYRd7yXeFVm0L2M/Ad1jOiFdxXgfOCR4S+A1rv02mopsWPhLBxX/AMUZz2Egk8NggYCn2ZgjhLIRwGkJYgXbW//APXx5m+e3SWSTHE0IDOKSciCIXcZSx9hsI+lneKCfo4DUFPjHIx5Y0GqRYTLmdqVVGz/TaTnCbbFKJ9WbdQjfTo84KdHNMKJchG9NS6nXb90WW473HSYxx6h6+ANGwjejPCy2FAAAAAElFTkSuQmCC3fec01980cde9d9467a6a0f011f0d5e6');
 }
-
 .comment-list {
   border-top: 3px solid rgba(255, 153, 33, 0.9);
   background: #FFF;
@@ -351,6 +363,7 @@ a:hover {
   right: 0;
   text-align: center;
   line-height: 100%;
+  margin-right:10px;
 }
 
 #clock {
@@ -364,7 +377,6 @@ a:hover {
   background-color: #FFF;
   display: block;
   color: #222;
-  padding: 5px 10px;
   font-weight: bold;
 }
 
@@ -411,12 +423,17 @@ a:hover {
     }
   }
 
-  .container {
+.container {
 	display: block;
 	width: 100%;
 	padding-top: 80px;
 	margin-bottom: 0px;
+  .notification{
+   bottom:auto; 
+   width:80%;
+   left:10%;
   }
+}
 #comment-for-login {
   position:absolute; 
   width: 100vw;
@@ -450,6 +467,12 @@ a:hover {
       float:none;
     }
   }
+}
+.comment-message{
+  margin:30px 0 0 10px;
+}
+.comment-div .comment-inner iframe{
+  width:100%;
 }
 
   #cover {
