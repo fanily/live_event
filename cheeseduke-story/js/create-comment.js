@@ -1,3 +1,11 @@
+var linkify = function(text){
+	var url = text.match(/(\(.*?)?\b((?:https?|ftp|file):\/\/[-a-z0-9+&@#\/%?=~_()|!:,.;]*[-a-z0-9+&@#\/%=~_()|])/ig);
+	$.each(url , function(i , v){
+		text = text.replace(v, '<a href="' + v + '">' + v + '</a>')
+	});
+return text;
+}
+
 var get_comment = function(offset){
   //set default value for offset
   offset = typeof offset !== undefined ? 0 : offset;
@@ -34,8 +42,12 @@ var get_comment = function(offset){
             comment.find(".id").text(c.id);
             comment.find(".avatars").attr("src", c.comment_avatar);
             comment.find(".comment-author").text(c.comment_author);
-            comment.find("p").text(c.comment_content);
             comment.find(".date").text(c.date);
+						if( c.comment_content.match(/(\(.*?)?\b((?:https?|ftp|file):\/\/[-a-z0-9+&@#\/%?=~_()|!:,.;]*[-a-z0-9+&@#\/%=~_()|])/ig)){
+            	comment.find("p").html(linkify(c.comment_content));
+						}else{
+						 	comment.find("p").text(c.comment_content);
+						}
             comment.attr("id", "");
             $(".comment-list").append(comment);
             comment.fadeIn(50);
@@ -60,12 +72,15 @@ var init_comment = function(){
             c.comment_avatar = 'https://www.fanily.tw/img/g_avatars.png';
           }
           c.date = moment.unix(c.comment_date).format('HH:mm');
-
           comment.find(".id").text(c.id);
           comment.find(".avatars").attr("src", c.comment_avatar);
           comment.find(".comment-author").text(c.comment_author);
-          comment.find("p").text(c.comment_content);
           comment.find(".date").text(c.date);
+    			if( c.comment_content.match(/(\(.*?)?\b((?:https?|ftp|file):\/\/[-a-z0-9+&@#\/%?=~_()|!:,.;]*[-a-z0-9+&@#\/%=~_()|])/ig)){
+          	comment.find("p").html(linkify(c.comment_content));
+					}else{
+						comment.find("p").text(c.comment_content);
+					}
           $(".comment-list").append(comment);
           comment.attr("id", "");
           comment.fadeIn(50);
