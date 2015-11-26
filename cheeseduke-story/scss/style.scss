@@ -262,13 +262,17 @@ a {
         #fblogin {
             background: #4aa3df;
         }
-        button {
-            border: none;
-            width: 25%;
-            height: 50px;
-            display: inline-block;
-            padding-top: 0;
-            float: none;
+        .btn {
+			display: inline-block;
+			width: auto;
+			height: 50px;
+			line-height: 50px;
+			padding: 0 10px;
+			margin-right: 10px;
+			float: left;
+			&:last-child {
+				margin-right: 0px;
+			}
         }
     }
 }
