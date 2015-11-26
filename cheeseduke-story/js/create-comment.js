@@ -1,7 +1,7 @@
 var linkify = function(text){
 	var url = text.match(/(\(.*?)?\b((?:https?|ftp|file):\/\/[-a-z0-9+&@#\/%?=~_()|!:,.;]*[-a-z0-9+&@#\/%=~_()|])/ig);
 	$.each(url , function(i , v){
-		text = text.replace(v, '<a href="' + v + '">' + v + '</a>')
+		text = text.replace(v, '<a href="' + v + '" target="_target">' + v + '</a>')
 	});
 return text;
 }
