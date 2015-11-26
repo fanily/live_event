@@ -339,7 +339,7 @@ a {
     &#comment-send {
         width: 13%;
         height: 50px;
-        margin: 0 0 0 5%;
+        margin: 0 5%;
         border: 0;
         float: left;
         white-space: nowrap;
@@ -356,8 +356,9 @@ a {
 .comment-message {
     height: 40px;
     padding: 3px;
-    width: 70%;
+    width: 65%;
     margin: 0 0 0 5%;
+    float: left;
 }
 #cover {
     background: rgba(0, 0, 0, 0.8);
