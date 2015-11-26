@@ -177,12 +177,15 @@ a:hover {
   .author{ 
     img {
       vertical-align: middle;
-      max-height: 25px;
-      max-width: 25px;
+      height: 45px;
+      width: 45px;
+      border-radius:50%;
+      margin-left:5px;
     }
     span {
       color: #F80;
       display: inline-block;
+      margin-left:10px;
     }
 
   }
@@ -191,9 +194,12 @@ a:hover {
     float: right;
     font-size: 13px;
     color: #CCC;
+    margin-right:20px;
   }
   p {
-   margin: 0 0 10px;
+    word-wrap:break-word;
+    margin:5px auto;
+    width:90%;
   }
   .id{
     display:none;

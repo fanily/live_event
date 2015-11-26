@@ -31,6 +31,7 @@ var get_comment = function(offset){
             comment.find(".author span").text(comment_list[i].comment_author);
             comment.find("p").text(comment_list[i].comment_content);
             comment.find(".date").text(comment_list[i].show_date);
+            comment.attr("id", "");
             $(".comment-list").append(comment);
             comment.fadeIn(50);
             $(window).scrollTop($(document).height()+100);
@@ -55,6 +56,7 @@ var init_comment = function(){
           comment.find("p").text(comment_list[i].comment_content);
           comment.find(".date").text(comment_list[i].show_date);
           $(".comment-list").append(comment);
+          comment.attr("id", "");
           comment.fadeIn(50);
         }
       $(window).scrollTop($(document).height()+100);

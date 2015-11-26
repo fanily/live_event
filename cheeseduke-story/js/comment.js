@@ -1,6 +1,10 @@
+//comment-web's main function
+
+
 jQuery(function(){
   init_comment();
   // check login status
+  
    $.ajax({
      url: config.status_url,
      type: "POST",
@@ -19,7 +23,7 @@ jQuery(function(){
            $("#comment-for-form").show(function(){
              $(this).css("opacity","1");
              $(".comment-form").css("height", "110px");
-             $(".comment-list").css("padding-bottom","100px");
+             $(".comment-list").css("padding-bottom","130px");
            });
        } 
    });
@@ -30,10 +34,8 @@ jQuery(function(){
   		FB.login(function(response) {
   			if (response.authResponse) {
             window.location.replace(config.fb_login_url);
-  			} else {
-  				$('div.error-message').html('<div class="bg-danger">取得 Facebook 授權失敗。</div>');
   			}
-  		}, {
+      }, {
   			scope: 'user_about_me, user_birthday, user_friends, publish_actions, email'
   		});
   	});
@@ -43,7 +45,7 @@ jQuery(function(){
            normal_login(account, password);
        });
 
-    //event 們
+    //events 
     $(document).keypress(function(e){
       if(e.which === 13){
         if( $("#comment-for-login").css("display") === "block" ){
@@ -54,9 +56,9 @@ jQuery(function(){
       }
     });
 
-      $('#comment-send').click(function(){
-       var content = $('.comment-message').val();
-       send_message(content);
+   $('#comment-send').click(function(){
+     var content = $('.comment-message').val();
+     send_message(content);
    });
    setInterval(get_comment,3000);
 });
