@@ -27,20 +27,8 @@ jQuery(function(){
            $("#comment-for-login").hide();
            $("#session-login").attr("checked", "checked");
            $("#comment-for-form").show(function(){
-             $(this).css("opacity","1");
-             if(is_mobile_portrait) {
-              $('.comment-list').css({
-                'padding-bottom': '0px !important;',
-                'padding-top': '100px;'
-              });
-              $('.comment-list').css({
-                'top': 0,
-                'border-bottom': '1px solid #efefef'
-              });
-             } else {
+              $(this).css("opacity","1");
               $(".comment-list").css("padding-bottom","100px");
-             }
-
            });
        }
    });
