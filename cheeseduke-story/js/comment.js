@@ -9,6 +9,8 @@ window.fbAsyncInit = function(){
 
 jQuery(function(){
   init_comment();
+  $("#comment-send").textareaAutoSize();
+
   // check login status
    $.ajax({
      url: config.status_url,
@@ -53,8 +55,6 @@ jQuery(function(){
       if(e.which === 13){
         if( $("#comment-for-login").css("display") === "block" ){
           $("#login").click();
-        }else{
-          $("#comment-send").click();
         }
       }
     });

@@ -38,10 +38,12 @@ var get_comment = function(offset){
               c.comment_avatar = 'https://www.fanily.tw/img/g_avatars.png';
             }
             c.date = moment.unix(c.comment_date).format('HH:mm');
+            c.comment_content = c.comment_content.replace(/\n/g, '<br>');
 
             comment.find(".id").text(c.id);
             comment.find(".avatars").attr("src", c.comment_avatar);
             comment.find(".comment-author").text(c.comment_author);
+            comment.find("p").html(c.comment_content);
             comment.find(".date").text(c.date);
 						if( c.comment_content.match(/(\(.*?)?\b((?:https?|ftp|file):\/\/[-a-z0-9+&@#\/%?=~_()|!:,.;]*[-a-z0-9+&@#\/%=~_()|])/ig)){
             	comment.find("p").html(linkify(c.comment_content));
@@ -72,9 +74,12 @@ var init_comment = function(){
             c.comment_avatar = 'https://www.fanily.tw/img/g_avatars.png';
           }
           c.date = moment.unix(c.comment_date).format('HH:mm');
+          c.comment_content = c.comment_content.replace(/\n/g, '<br>');
+
           comment.find(".id").text(c.id);
           comment.find(".avatars").attr("src", c.comment_avatar);
           comment.find(".comment-author").text(c.comment_author);
+          comment.find("p").html(c.comment_content);
           comment.find(".date").text(c.date);
     			if( c.comment_content.match(/(\(.*?)?\b((?:https?|ftp|file):\/\/[-a-z0-9+&@#\/%?=~_()|!:,.;]*[-a-z0-9+&@#\/%=~_()|])/ig)){
           	comment.find("p").html(linkify(c.comment_content));
@@ -116,19 +121,24 @@ var normal_login = function(account , password){
 }
 
 var send_message = function(content){
-    if (content == '') {
+  if (content == '') {
       alert('請輸入回應內容');
       return ;
-   }
+  }
   $.ajax({
     url:config.send_url,
     data:{"message":content},
     type:"POST",
     xhrFields: {
        withCredentials: true
-     }
+     },
+     beforeSend : function() {
+        $('#comment-send').attr('disabled', true);
+        $(".comment-message").val('').prop('disabled', true).attr('rows', 1).css({'height':'auto'});
+      }
   }).done(function(){
-    $(".comment-message").val("");
+    $('#comment-send').attr('disabled', false);
+    $(".comment-message").prop('disabled', false);
     get_comment();
   });
 
