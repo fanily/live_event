@@ -33,7 +33,7 @@ var get_comment = function(offset){
             comment.find(".date").text(comment_list[i].show_date);
             $(".comment-list").append(comment);
             comment.fadeIn(50);
-            $(window).scrollTop($(document).height());
+            $(window).scrollTop($(document).height()+100);
        }
     }  
   });  
@@ -57,7 +57,7 @@ var init_comment = function(){
           $(".comment-list").append(comment);
           comment.fadeIn(50);
         }
-      $(window).scrollTop($(document).height());
+      $(window).scrollTop($(document).height()+100);
   });
 }
 

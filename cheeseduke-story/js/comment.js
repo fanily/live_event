@@ -23,7 +23,8 @@ jQuery(function(){
            });
        } 
    });
-   // fb login
+
+   // login event 
   $('#fblogin').click(function(e){
   		e.preventDefault();
   		FB.login(function(response) {
@@ -36,12 +37,24 @@ jQuery(function(){
   			scope: 'user_about_me, user_birthday, user_friends, publish_actions, email'
   		});
   	});
-   $('#login').click(function(){
-       var account = $('#account').val();
-       var password = $('#password').val();
-       normal_login(account, password);
-   });
-   $('#comment-send').click(function(){
+    $('#login').click(function(){
+           var account = $('#account').val();
+           var password = $('#password').val();
+           normal_login(account, password);
+       });
+
+    //event 們
+    $(document).keypress(function(e){
+      if(e.which === 13){
+        if( $("#comment-for-login").css("display") === "block" ){
+          $("#login").click();
+        }else{
+          $("#comment-send").click();
+        }
+      }
+    });
+
+      $('#comment-send').click(function(){
        var content = $('.comment-message').val();
        send_message(content);
    });
