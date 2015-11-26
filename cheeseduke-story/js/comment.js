@@ -10,6 +10,9 @@ window.fbAsyncInit = function(){
 jQuery(function(){
   init_comment();
   // check login status
+  var is_mobile_portrait = window.matchMedia("screen and (max-width: 667px) and (orientation: portrait)").matches;
+
+  console.log(is_mobile_portrait);
    $.ajax({
      url: config.status_url,
      type: "POST",
@@ -25,8 +28,19 @@ jQuery(function(){
            $("#session-login").attr("checked", "checked");
            $("#comment-for-form").show(function(){
              $(this).css("opacity","1");
-             $(".comment-form").css("height", "110px");
-             $(".comment-list").css("padding-bottom","130px");
+             if(is_mobile_portrait) {
+              $('.comment-list').css({
+                'padding-bottom': '0px !important;',
+                'padding-top': '100px;'
+              });
+              $('.comment-list').css({
+                'top': 0,
+                'border-bottom': '1px solid #efefef'
+              });
+             } else {
+              $(".comment-list").css("padding-bottom","100px");
+             }
+
            });
        }
    });
