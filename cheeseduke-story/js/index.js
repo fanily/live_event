@@ -1,5 +1,4 @@
 jQuery(function($){
-$("#cover").hide();
   $('#clock').countdown(config.start_time, function(event) {
  	  $(this).html(event.strftime('%D天 %H:%M:%S'));
  	});
