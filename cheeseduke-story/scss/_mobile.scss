@@ -190,6 +190,10 @@
 	height: 25px;
 	line-height: 25px;
   }
+  .notification {
+  	width: 80%;
+    margin: 0 auto 10px auto;
+  }
 }
 
 @media only screen and (max-height: 667px) and (orientation: landscape) {
