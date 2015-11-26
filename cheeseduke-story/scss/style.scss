@@ -168,21 +168,20 @@ a {
     padding-bottom: 40px;
 }
 .comment {
-    padding: 5px;
+    padding: 10px;
     line-height: 25px;
-    .author {
-        img {
-            vertical-align: middle;
-            height: 40px;
-            width: 40px;
-            border-radius: 50%;
-            margin-left: 5px;
-        }
-        span {
-            color: #F80;
-            display: inline-block;
-            margin-left: 10px;
-        }
+    .avatars {
+        vertical-align: middle;
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        margin-left: 5px;
+        margin-bottom: 5px;
+    }
+    .comment-author {
+        color: #F80;
+        display: inline-block;
+        margin-left: 10px;
     }
     .date {
         display: inline-block;
@@ -190,11 +189,15 @@ a {
         font-size: 13px;
         color: #CCC;
         margin-right: 20px;
+        margin-top: 10px;
+    	line-height: 25px;
     }
     p {
         word-wrap: break-word;
         margin: 5px auto;
-        width: 90%;
+        display: inline;
+    	padding-left: 5px;
+    	line-height: 25px;
     }
     .id,
     &#comment-template {
@@ -208,7 +211,6 @@ a {
         clear: both;
         margin: 0 auto;
         position: relative;
-        border-top: 1px solid #CCC;
     }
     &:last-child::after {
         display: none;

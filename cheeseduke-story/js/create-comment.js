@@ -32,8 +32,8 @@ var get_comment = function(offset){
             c.date = moment.unix(c.comment_date).format('HH:mm');
 
             comment.find(".id").text(c.id);
-            comment.find(".author img").attr("src", c.comment_avatar);
-            comment.find(".author span").text(c.comment_author);
+            comment.find(".avatars").attr("src", c.comment_avatar);
+            comment.find(".comment-author").text(c.comment_author);
             comment.find("p").text(c.comment_content);
             comment.find(".date").text(c.date);
             comment.attr("id", "");
@@ -62,8 +62,8 @@ var init_comment = function(){
           c.date = moment.unix(c.comment_date).format('HH:mm');
 
           comment.find(".id").text(c.id);
-          comment.find(".author img").attr("src", c.comment_avatar);
-          comment.find(".author span").text(c.comment_author);
+          comment.find(".avatars").attr("src", c.comment_avatar);
+          comment.find(".comment-author").text(c.comment_author);
           comment.find("p").text(c.comment_content);
           comment.find(".date").text(c.date);
           $(".comment-list").append(comment);
