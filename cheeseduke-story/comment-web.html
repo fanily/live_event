@@ -10,6 +10,7 @@
     <script src='js/jquery-1.11.3.min.js'></script>
     <script type="text/javascript" src="js/jquery.countdown.min.js"></script>
     <script src='js/cookie.min.js'></script>
+    <script type="text/javascript" src="js/moment.js"></script>
     <!--[if lt IE 9]>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.js"></script>
     <![endif]-->
@@ -36,6 +37,13 @@
   <div id="wrapper">
     <div class="comment-list">
       <div class="comment" id="comment-template">
+        <img class="avatars" src="#"/>
+        <span class="comment-author"></span>
+        <p class="comment-content"></p>
+        <span class="date"></span>
+        <span class="id"></span>
+      </div>
+      <!-- <div class="comment" id="comment-template">
         <div class="author">
           <img src="#"/>
           <span class="comment-author"></span>
@@ -43,7 +51,7 @@
         <p class="comment-content"></p>
         <span class="date"></span>
         <span class="id"></span>
-      </div>
+      </div> -->
     </div>
     <div class="comment-form">
       <input type="radio" id="session-login" name="section-control"/>

@@ -24,15 +24,18 @@ var get_comment = function(offset){
     }
     if( comment_flag === true && same_comment != 19 ){
        for( var i = same_comment+1; i <= 19 ; ++i ){
-            if(comment_list[i].comment_avatar === '') {
-              comment_list[i].comment_avatar = 'https://www.fanily.tw/img/g_avatars.png';
-            }
             var comment = $("#comment-template").clone();
-            comment.find(".id").text(comment_list[i].id);
-            comment.find(".author img").attr("src", comment_list[i].comment_avatar);
-            comment.find(".author span").text(comment_list[i].comment_author);
-            comment.find("p").text(comment_list[i].comment_content);
-            comment.find(".date").text(comment_list[i].show_date);
+            var c = comment_list[i]
+            if(c.comment_avatar === '') {
+              c.comment_avatar = 'https://www.fanily.tw/img/g_avatars.png';
+            }
+            c.date = moment.unix(c.comment_date).format('HH:mm');
+
+            comment.find(".id").text(c.id);
+            comment.find(".avatars").attr("src", c.comment_avatar);
+            comment.find(".comment-author").text(c.comment_author);
+            comment.find("p").text(c.comment_content);
+            comment.find(".date").text(c.date);
             comment.attr("id", "");
             $(".comment-list").append(comment);
             comment.fadeIn(50);
@@ -51,16 +54,18 @@ var init_comment = function(){
   }).done(function(output){
       var comment_list = JSON.parse(output);
       for( var i = 0; i <= 19 ; i++ ){
-          if(comment_list[i].comment_avatar === '') {
-            comment_list[i].comment_avatar = 'https://www.fanily.tw/img/g_avatars.png';
-          }
-
           var comment = $("#comment-template").clone();
-          comment.find(".id").text(comment_list[i].id);
-          comment.find(".author img").attr("src", comment_list[i].comment_avatar);
-          comment.find(".author span").text(comment_list[i].comment_author);
-          comment.find("p").text(comment_list[i].comment_content);
-          comment.find(".date").text(comment_list[i].show_date);
+          var c = comment_list[i]
+          if(c.comment_avatar === '') {
+            c.comment_avatar = 'https://www.fanily.tw/img/g_avatars.png';
+          }
+          c.date = moment.unix(c.comment_date).format('HH:mm');
+
+          comment.find(".id").text(c.id);
+          comment.find(".avatars").attr("src", c.comment_avatar);
+          comment.find(".comment-author").text(c.comment_author);
+          comment.find("p").text(c.comment_content);
+          comment.find(".date").text(c.date);
           $(".comment-list").append(comment);
           comment.attr("id", "");
           comment.fadeIn(50);
