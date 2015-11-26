@@ -10,9 +10,6 @@ window.fbAsyncInit = function(){
 jQuery(function(){
   init_comment();
   // check login status
-  var is_mobile_portrait = window.matchMedia("screen and (max-width: 667px) and (orientation: portrait)").matches;
-
-  console.log(is_mobile_portrait);
    $.ajax({
      url: config.status_url,
      type: "POST",
