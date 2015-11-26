@@ -43,12 +43,11 @@ var get_comment = function(offset){
             comment.find(".id").text(c.id);
             comment.find(".avatars").attr("src", c.comment_avatar);
             comment.find(".comment-author").text(c.comment_author);
-            comment.find("p").html(c.comment_content);
             comment.find(".date").text(c.date);
 						if( c.comment_content.match(/(\(.*?)?\b((?:https?|ftp|file):\/\/[-a-z0-9+&@#\/%?=~_()|!:,.;]*[-a-z0-9+&@#\/%=~_()|])/ig)){
             	comment.find("p").html(linkify(c.comment_content));
 						}else{
-						 	comment.find("p").text(c.comment_content);
+						 	comment.find("p").html(c.comment_content);
 						}
             comment.attr("id", "");
             $(".comment-list").append(comment);
@@ -79,12 +78,11 @@ var init_comment = function(){
           comment.find(".id").text(c.id);
           comment.find(".avatars").attr("src", c.comment_avatar);
           comment.find(".comment-author").text(c.comment_author);
-          comment.find("p").html(c.comment_content);
           comment.find(".date").text(c.date);
     			if( c.comment_content.match(/(\(.*?)?\b((?:https?|ftp|file):\/\/[-a-z0-9+&@#\/%?=~_()|!:,.;]*[-a-z0-9+&@#\/%=~_()|])/ig)){
           	comment.find("p").html(linkify(c.comment_content));
 					}else{
-						comment.find("p").text(c.comment_content);
+						comment.find("p").html(c.comment_content);
 					}
           $(".comment-list").append(comment);
           comment.attr("id", "");
