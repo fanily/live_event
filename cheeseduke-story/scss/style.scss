@@ -75,20 +75,17 @@ a {
     }
 }
 .container {
-    width: 100vw;
-    padding-top: 63px;
-    margin-bottom: 20px;
+    width: 100%;
+    padding-top: 65px;
     display: -webkit-flex;
     display: flex;
     margin: 0 auto;
-    height: 100vh;
+    height: 95vh;
 }
 .notification {
-    position: absolute;
-    width: 100%;
-    bottom: 0;
-    text-align: center;
-    left: 0;
+	width: 100%;
+	text-align: center;
+	margin: 0 0 10px 0;
     a {
         color: #F80;
     }
