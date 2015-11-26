@@ -2,19 +2,19 @@ var get_comment = function(offset){
   //set default value for offset
   offset = typeof offset !== undefined ? 0 : offset;
   var api_url = config.get_comment_url + offset.toString();
-  //get comment using ajax 
+  //get comment using ajax
   $.ajax({
     url: api_url,
     type: "GET",
     dataType: "text",
   }).done(function(output){
-    // render comment  
+    // render comment
     // comment flag === false if there are the same comment out there
     var comment_list = JSON.parse(output);
     var last_comment = $(".comment-list .comment").last().find(".id").text();
     var comment_flag = false;
     var same_comment = 0;
-    //check if there are the same comments in the comment list 
+    //check if there are the same comments in the comment list
     for( var key in comment_list ){
       var current_comment = comment_list[key];
       if( comment_list[key].id  === last_comment && comment_flag === false ){
@@ -25,6 +25,9 @@ var get_comment = function(offset){
     }
     if( comment_flag === true && same_comment != 19 ){
        for( var i = same_comment+1; i <= 19 ; ++i ){
+            if(comment_list[i].comment_avatar === '') {
+              comment_list[i].comment_avatar = 'https://www.fanily.tw/img/g_avatars.png';
+            }
             var comment = $("#comment-template").clone();
             comment.find(".id").text(comment_list[i].id);
             comment.find(".author img").attr("src", comment_list[i].comment_avatar);
@@ -36,8 +39,8 @@ var get_comment = function(offset){
             comment.fadeIn(50);
             $(window).scrollTop($(document).height()+100);
        }
-    }  
-  });  
+    }
+  });
 }
 
 var init_comment = function(){
@@ -49,6 +52,10 @@ var init_comment = function(){
   }).done(function(output){
       var comment_list = JSON.parse(output);
       for( var i = 0; i <= 19 ; i++ ){
+          if(comment_list[i].comment_avatar === '') {
+            comment_list[i].comment_avatar = 'https://www.fanily.tw/img/g_avatars.png';
+          }
+
           var comment = $("#comment-template").clone();
           comment.find(".id").text(comment_list[i].id);
           comment.find(".author img").attr("src", comment_list[i].comment_avatar);
@@ -85,7 +92,7 @@ var normal_login = function(account , password){
       window.location.reload();
     }).fail(function(){
       alert("登入失敗，請稍候再試");
-    })  
+    })
   }
 }
 
@@ -105,7 +112,7 @@ var send_message = function(content){
     $(".comment-message").val("");
     get_comment();
   });
-  
+
 }
 
 
