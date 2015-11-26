@@ -20,7 +20,6 @@ var get_comment = function(offset){
       if( comment_list[key].id  === last_comment && comment_flag === false ){
           same_comment = parseInt(key);
           comment_flag = true;
-          console.log(same_comment);
       }
     }
     if( comment_flag === true && same_comment != 19 ){

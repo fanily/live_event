@@ -3,7 +3,7 @@ window.fbAsyncInit = function(){
 	FB.init({
 			appId: '626114784069979',
 			cookie: true,
-			version: 'v2.2' 
+			version: 'v2.2'
 		});
 }
 
@@ -19,9 +19,7 @@ jQuery(function(){
        withCredentials: true
      }
    }).done(function(output){
-     console.log(output);
      var result = JSON.parse(output);
-     console.log(result);
      if( result.acl ){
            $("#comment-for-login").hide();
            $("#session-login").attr("checked", "checked");
@@ -30,13 +28,13 @@ jQuery(function(){
              $(".comment-form").css("height", "110px");
              $(".comment-list").css("padding-bottom","130px");
            });
-       } 
+       }
    });
 
-   // login event 
+   // login event
   $('#fblogin').click(function(e){
   		e.preventDefault();
-      
+
   		FB.login(function(response) {
   			if (response.authResponse) {
             window.location.replace(config.fb_login_url);
@@ -51,7 +49,7 @@ jQuery(function(){
            normal_login(account, password);
        });
 
-    //events 
+    //events
     $(document).keypress(function(e){
       if(e.which === 13){
         if( $("#comment-for-login").css("display") === "block" ){
