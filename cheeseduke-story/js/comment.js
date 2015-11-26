@@ -1,10 +1,15 @@
 //comment-web's main function
-
+window.fbAsyncInit = function(){
+	FB.init({
+			appId: '626114784069979',
+			cookie: true,
+			version: 'v2.2' 
+		});
+}
 
 jQuery(function(){
   init_comment();
   // check login status
-  
    $.ajax({
      url: config.status_url,
      type: "POST",
@@ -31,6 +36,7 @@ jQuery(function(){
    // login event 
   $('#fblogin').click(function(e){
   		e.preventDefault();
+      
   		FB.login(function(response) {
   			if (response.authResponse) {
             window.location.replace(config.fb_login_url);
