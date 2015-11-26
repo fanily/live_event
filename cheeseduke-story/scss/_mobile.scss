@@ -1,0 +1,224 @@
+@media only screen and (max-width: 667px) {
+  .toolbar {
+    height: auto;
+    h1.logo {
+      background-size: 92px 30px;
+      width: 92px;
+      height: 30px;
+      margin-left: 5px;
+      a {
+        height: 30px;
+      }
+      img {
+        width: 125px;
+        height: 30px;
+      }
+    }
+    h2 {
+      display: block;
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 0px;
+      margin: 0;
+      line-height: 24px;
+      width: 100%;
+      height: auto;
+      text-align: center;
+      span {
+        display: block;
+        width: 100%;
+        text-align: center;
+        font-size: 12px;
+      }
+    }
+  }
+  .container {
+    display: block;
+    width: 100%;
+    padding-top: 80px;
+    margin-bottom: 0px;
+    .notification {
+      bottom: auto;
+      width: 80%;
+      left: 10%;
+    }
+  }
+  #comment-for-login {
+    position: fixed;
+    width: 100vw;
+    height: 120vh;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 10;
+    .login-form {
+      width: 70%;
+      margin: 0 auto;
+      text-align: center;
+      input {
+        width: 100%;
+        height: 30px;
+      }
+      #password {
+        margin-bottom: 20px;
+      }
+      #fblogin {
+        width: auto;
+        background: #4aa3df;
+      }
+      button {
+        border: none;
+        width: 25%;
+        height: 50px;
+        display: inline-block;
+        padding-top: 0;
+        float: none;
+      }
+    }
+  }
+  .comment-message {
+    margin: 30px 0 0 10px;
+  }
+  .comment-div .comment-inner iframe {
+    width: 100%;
+  }
+  #cover {
+    background: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;
+    line-height: 100%;
+  }
+  #clock {
+    font-size: 24px;
+    padding: 0px;
+    top: 50%;
+    margin-top: -50px;
+  }
+  .live {
+    position: relative;
+    width: 100%;
+    height: auto;
+    flex: none;
+    .live-inner {
+      position: relative;
+      -webkit-align-items: stretch;
+      align-items: stretch;
+      -webkit-justify-content: stretch;
+      justify-content: stretch;
+      margin: 8px;
+      height: auto;
+      display: block;
+      iframe {
+        width: 100%;
+        height: 200px;
+      }
+    }
+  }
+  .comment-div {
+    position: relative;
+    width: 100%;
+    height: 48%;
+    flex: none;
+    .comment-inner {
+      -webkit-align-items: stretch;
+      align-items: stretch;
+      -webkit-justify-content: stretch;
+      justify-content: stretch;
+      margin: 8px;
+      display: block;
+    }
+    iframe {
+      border: none;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .login {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    .close {
+      -moz-border-radius: 30px;
+      -webkit-border-radius: 30px;
+      border-radius: 30px;
+      display: block;
+      position: absolute;
+      top: -15px;
+      right: -15px;
+      width: 30px;
+      height: 30px;
+      line-height: 30px;
+      font-size: 18px;
+      font-weight: bold;
+      text-align: center;
+      background: #000;
+      color: #CCC;
+      border: 2px solid #FFF;
+    }
+    .login-form {
+      width: 60%;
+      padding: 20px;
+      background: #FFF;
+      position: absolute;
+      top: 30%;
+      left: 17%;
+    }
+    .input {
+      margin-bottom: 15px;
+      label {
+        font-size: 14px;
+        margin: 0 10px;
+        line-height: 30px;
+        height: 30px;
+        display: inline-block;
+      }
+    }
+  }
+  .comment-list {
+    height: 65%;
+  }
+  .comment {
+    font-size: 13px;
+    line-height: 20px;
+    .date {
+      font-size: 12px;
+    }
+  }
+  .btn {
+    padding: 0px 3px;
+    height: 25px;
+    line-height: 25px;
+  }
+}
+
+@media only screen and (max-height: 667px) and (orientation: landscape) {
+  .live .live-inner iframe {
+    height: 95%;
+  }
+}
+
+@media only screen and (max-width: 667px) and (orientation: landscape) {
+  .container {
+    padding-top: 60px;
+    .comment-div {
+      height: 80vh;
+    }
+  }
+  .toolbar {
+    position: absolute;
+    h2 {
+      font-size: 20px;
+      span {
+        font-size: 16px;
+      }
+    }
+  }
+  .live .live-inner iframe {
+    height: 80vh;
+  }
+}
