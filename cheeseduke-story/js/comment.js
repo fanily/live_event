@@ -1,15 +1,67 @@
-(function(w, undefined){
-  var p = (function(qs) {
-      qs = qs.split("+").join(" ");
-      var p = {}, t,
-          re = /[?&]?([^=]+)=([^&]*)/g;
-      while (t = re.exec(qs)) {
-          p[decodeURIComponent(t[1])]
-              = decodeURIComponent(t[2]);
-      }
-      return p;
-  })(w.location.search);
-  w.videoId=p['id']||'';
-  w.token=p['token']||'';
-})(this);
+//comment-web's main function
+window.fbAsyncInit = function(){
+	FB.init({
+			appId: '626114784069979',
+			cookie: true,
+			version: 'v2.2'
+		});
+}
 
+jQuery(function(){
+  init_comment();
+  $("#comment-send").textareaAutoSize();
+
+  // check login status
+   $.ajax({
+     url: config.status_url,
+     type: "POST",
+     datatype: "text",
+     async : false,
+     xhrFields: {
+       withCredentials: true
+     }
+   }).done(function(output){
+     var result = JSON.parse(output);
+     if( result.acl ){
+           $("#comment-for-login").hide();
+           $("#session-login").attr("checked", "checked");
+           $("#comment-for-form").show(function(){
+              $(this).css("opacity","1");
+              $(".comment-list").css("padding-bottom","100px");
+           });
+       }
+   });
+
+   // login event
+  $('#fblogin').click(function(e){
+  		e.preventDefault();
+
+  		FB.login(function(response) {
+  			if (response.authResponse) {
+            window.location.replace(config.fb_login_url);
+  			}
+      }, {
+  			scope: 'user_about_me, user_birthday, user_friends, publish_actions, email'
+  		});
+  	});
+    $('#login').click(function(){
+           var account = $('#account').val();
+           var password = $('#password').val();
+           normal_login(account, password);
+       });
+
+    //events
+    $(document).keypress(function(e){
+      if(e.which === 13){
+        if( $("#comment-for-login").css("display") === "block" ){
+          $("#login").click();
+        }
+      }
+    });
+
+   $('#comment-send').click(function(){
+     var content = $('.comment-message').val();
+     send_message(content);
+   });
+   setInterval(get_comment,3000);
+});

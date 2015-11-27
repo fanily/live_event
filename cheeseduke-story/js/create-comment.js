@@ -1,135 +1,145 @@
-(function(window, undefined){
-    var $ = window.jQuery
-      , getComment = function(offset, callback){
-            var api = 'http://comment-api.fanily.com.tw/comment?video_id=' + window.videoId
-              ;
-            offset = offset || '';
-            callback = callback || function(){};
-            $.getJSON(api + '&offset=' + offset).done(function(data){
-                if (data.error == '' && data.status == 200) {
-                    if (data.offset != '') {
-                        nextOffset = data.offset;
-                    }
-                    if (data.comments.length > 0) {
-                        $.each(data.comments, function(k,v){
-                            if (!commentCache.hasOwnProperty(v.comment_id)) {
-                                commentCache[v.comment_id] = v;
-                                commentList.push(v.comment_id);
-                            }
-                        });
-                        commentList.sort(function(a,b){
-                            return commentCache[b].timestamp - commentCache[a].timestamp;
-                        });
-                    }
-                }
-            }).done(renderComment).done(callback);
-        }
-      , renderComment = function(){
-            var p = $('.comment-list')
-              , c = p.find('.comment')
-              , i
-              , html = ''
-              ;
-            i = 0;
-            firstID = c.eq(0).attr('id');
-            $.each(commentList, function(k,v){
-                var vv = commentCache[v];
-                html += '<div class="comment" id="'+v+'"> <span class="author"> <img src="'+vv.avatar+'" /> <span>'+vv.display_name+'</span> </span> 說：<span class="date">'+vv.time+'</span> <p>'+vv.content+'</p></div>'
-            });
-            p.html(html);
-            if (commentList[0] && firstID != commentList[0]) {
-                $(window).scrollTop(0);
-            }
-        }
-      , commentCache = {}
-      , commentList = []
-      , nextOffset = ''
-      , firstID = ''
-      , authToken = ''
-      , loginfb = function(){
-        var link = 'http://comment-api.fanily.com.tw/fb?return_url=' + encodeURIComponent(window.top.location);
-        window.top.location.href = link;
+var linkify = function(text){
+	var url = text.match(/(\(.*?)?\b((?:https?|ftp|file):\/\/[-a-z0-9+&@#\/%?=~_()|!:,.;]*[-a-z0-9+&@#\/%=~_()|])/ig);
+	$.each(url , function(i , v){
+		text = text.replace(v, '<a href="' + v + '" target="_target">' + v + '</a>')
+	});
+return text;
+}
+
+var get_comment = function(offset){
+  //set default value for offset
+  offset = typeof offset !== undefined ? 0 : offset;
+  var api_url = config.get_comment_url + offset.toString();
+  //get comment using ajax
+  $.ajax({
+    url: api_url,
+    type: "GET",
+    dataType: "text",
+  }).done(function(output){
+    // render comment
+    // comment flag === false if there are the same comment out there
+    var comment_list = JSON.parse(output);
+    var last_comment = $(".comment-list .comment").last().find(".id").text();
+    var comment_flag = false;
+    var same_comment = 0;
+    //check if there are the same comments in the comment list
+    for( var key in comment_list ){
+      var current_comment = comment_list[key];
+      if( comment_list[key].id  === last_comment && comment_flag === false ){
+          same_comment = parseInt(key);
+          comment_flag = true;
       }
-      , login = function(account, password) {
-            if (account == '') {
-                alert('請輸入帳號');
-                return;
+    }
+    if( comment_flag === true && same_comment != 19 ){
+       for( var i = same_comment+1; i <= 19 ; ++i ){
+            var comment = $("#comment-template").clone();
+            var c = comment_list[i]
+            if(c.comment_avatar === '') {
+              c.comment_avatar = 'https://www.fanily.tw/img/g_avatars.png';
             }
-            if (password == '') {
-                alert('請輸入密碼');
-                return;
-            }
-              $.post('https://denny.fanily.tw/auth/login',
-                {account: account, password: password}).done(function(data){
-                    console.log(data);
-                    if (data.error) {
-                        alert('系統錯誤');
-                        return;
-                    }
-                    authToken = data.token;
-                    $('#comment-for-home label').attr('for', 'section-control-form');
-                    $('#section-control-form').click();
-                }).fail(function(){
-                    alert('帳號密碼錯誤');
-                    $('#password').val('');
-                });
+            c.date = moment.unix(c.comment_date).format('HH:mm');
+            c.comment_content = c.comment_content.replace(/\n/g, '<br>');
+
+            comment.find(".id").text(c.id);
+            comment.find(".avatars").attr("src", c.comment_avatar);
+            comment.find(".comment-author").text(c.comment_author);
+            comment.find(".date").text(c.date);
+						if( c.comment_content.match(/(\(.*?)?\b((?:https?|ftp|file):\/\/[-a-z0-9+&@#\/%?=~_()|!:,.;]*[-a-z0-9+&@#\/%=~_()|])/ig)){
+            	comment.find("p").html(linkify(c.comment_content));
+						}else{
+						 	comment.find("p").html(c.comment_content);
+						}
+            comment.attr("id", "");
+            $(".comment-list").append(comment);
+            comment.fadeIn(50);
+            $(window).scrollTop($(document).height()+100);
+       }
+    }
+  });
+}
+
+var init_comment = function(){
+  var api_url = config.init_commet_url;
+  $.ajax({
+    url:api_url,
+    type:"GET",
+    dataType:"text"
+  }).done(function(output){
+      var comment_list = JSON.parse(output);
+      for( var i = 0; i <= 19 ; i++ ){
+          var comment = $("#comment-template").clone();
+          var c = comment_list[i]
+          if(c.comment_avatar === '') {
+            c.comment_avatar = 'https://www.fanily.tw/img/g_avatars.png';
+          }
+          c.date = moment.unix(c.comment_date).format('HH:mm');
+          c.comment_content = c.comment_content.replace(/\n/g, '<br>');
+
+          comment.find(".id").text(c.id);
+          comment.find(".avatars").attr("src", c.comment_avatar);
+          comment.find(".comment-author").text(c.comment_author);
+          comment.find(".date").text(c.date);
+    			if( c.comment_content.match(/(\(.*?)?\b((?:https?|ftp|file):\/\/[-a-z0-9+&@#\/%?=~_()|!:,.;]*[-a-z0-9+&@#\/%=~_()|])/ig)){
+          	comment.find("p").html(linkify(c.comment_content));
+					}else{
+						comment.find("p").html(c.comment_content);
+					}
+          $(".comment-list").append(comment);
+          comment.attr("id", "");
+          comment.fadeIn(50);
         }
-      , send = function(content) {
-            if (content == '') {
-                alert('請輸入回應內容');
-                return ;
-            }
-            $.post('http://comment-api.fanily.com.tw/comment', {
-                content:content,
-                token: authToken,
-                video_id: window.videoId}).done(function(data){
-                    if (data.token) {
-                        authToken = data.token;
-                    }
-                $('.comment-message').val('');
-                $(window).scrollTop();
-                $('#section-control-home').click();
-            });
-        }
-      ;
-    (function(){
-        $('input[name="section-control"]:radio').change(function() {
-            var id = $('input[name="section-control"]:checked').attr("id");
-            if (id == 'section-control-home') {
-                $('.comment-form').css('height', '50px');
-                $('.comment-list').css('padding-button', '40px');
-                $('#account').val('');
-                $('#password').val('');
-            } else if (id == 'section-control-login') {
-                //$('.comment-form').css('height', '110px');
-                //$('.comment-list').css('padding-button', '100px');
-                $('#account').focus();
-            } else if (id == 'section-control-form') {
-                $('.comment-form').css('height', '100px');
-                $('.comment-list').css('padding-button', '100px');
-            }
-        });
-        $('#fblogin').click(function(){
-            loginfb();
-        });
-        $('#login').click(function(){
-            var account = $('#account').val();
-            var password = $('#password').val();
-            login(account, password);
-        });
-        $('#comment-send').click(function(){
-            var content = $('.comment-message').val();
-            send(content);
-        });
-        setTimeout(function(){
-            getComment('', function(data){
-                if (data.offset != '') {
-                    getComment(data.offset, arguments.callee);
-                }
-            });
-            setTimeout(arguments.callee, 3000);
-        }, 3000);
-    });
-    
-})(this);
+      $(window).scrollTop($(document).height()+100);
+  });
+}
+
+var normal_login = function(account , password){
+  if( account === "" ){
+    alert('請輸入帳號');
+    return;
+
+  }else if (password == '') {
+    alert('請輸入密碼');
+    return;
+
+  }else{
+    $.ajax({
+      type:"POST",
+      data:{"account":account , "password":password},
+      dataType:"json",
+      url: config.login_url,
+      xhrFields: {
+       withCredentials: true
+      }
+    }).done(function(){
+      window.location.reload();
+    }).fail(function(){
+      alert("登入失敗，請稍候再試");
+    })
+  }
+}
+
+var send_message = function(content){
+  if (content == '') {
+      alert('請輸入回應內容');
+      return ;
+  }
+  $.ajax({
+    url:config.send_url,
+    data:{"message":content},
+    type:"POST",
+    xhrFields: {
+       withCredentials: true
+     },
+     beforeSend : function() {
+        $('#comment-send').attr('disabled', true);
+        $(".comment-message").val('').prop('disabled', true).attr('rows', 1).css({'height':'auto'});
+      }
+  }).done(function(){
+    $('#comment-send').attr('disabled', false);
+    $(".comment-message").prop('disabled', false);
+    get_comment();
+  });
+
+}
+
 
