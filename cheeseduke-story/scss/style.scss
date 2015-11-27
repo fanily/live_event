@@ -55,7 +55,7 @@ a {
         margin: 0 0 0 25px;
         line-height: 65px;
         height: 60px;
-        font-size: 22px;
+        font-size: 17px;
     }
     &::after {
         content: ".";
@@ -104,6 +104,7 @@ a {
         align-items: center;
         -webkit-justify-content: center;
         justify-content: center;
+		margin-top: -8px;
         iframe {
             width: 95%;
             height: 100%;
@@ -199,7 +200,7 @@ a {
     	padding-left: 5px;
     	line-height: 25px;
         a{
-          color:#F80; 
+          color:#F80;
         }
     }
     .id,
