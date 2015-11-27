@@ -66,7 +66,7 @@ var init_comment = function(){
     dataType:"text"
   }).done(function(output){
       var comment_list = JSON.parse(output);
-      for( var i = 0; i <= 19 ; i++ ){
+      for( var i = 0; i <= comment_list.length ; i++ ){
           var comment = $("#comment-template").clone();
           var c = comment_list[i]
           if(c.comment_avatar === '') {
