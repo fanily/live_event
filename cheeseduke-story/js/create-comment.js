@@ -33,7 +33,7 @@ var get_comment = function(offset){
     if( comment_flag === true && same_comment != 19 ){
        for( var i = same_comment+1; i <= 19 ; ++i ){
             var comment = $("#comment-template").clone();
-            var c = comment_list[i]
+            var c = comment_list[i];
             if(c.comment_avatar === '') {
               c.comment_avatar = 'https://www.fanily.tw/img/g_avatars.png';
             }
@@ -66,7 +66,7 @@ var init_comment = function(){
     dataType:"text"
   }).done(function(output){
       var comment_list = JSON.parse(output);
-      for( var i = 0; i <= comment_list.length ; i++ ){
+      for( var i = 0; i < comment_list.length ; i++ ){
           var comment = $("#comment-template").clone();
           var c = comment_list[i]
           if(c.comment_avatar === '') {
