@@ -1,6 +1,6 @@
 $(function () {
   if( window.matchMedia("screen and (max-width: 480px)").matches){
-		var insert = "在抗戰70周年時間點，<br>白先勇的文學、曹瑞原的影像、陳小霞的音樂、董陽孜的書寫…<br>場景、美術、道具、文物、年代生活，<br>我們希望能在此刻，<br>藉由台灣電視史上最磅礡的《一把青》，<br>找出影像與年代對話的另一個角度。"
+		var insert = "在抗戰70周年時間點，<br>白先勇的文學、曹瑞原的影像、黃世鳴的文字、<br>陳小霞的音樂、董陽孜的書寫…<br>場景、美術、道具、文物、年代生活，<br>我們希望能在此刻，<br>藉由台灣電視史上最磅礡的《一把青》，<br>找出影像與年代對話的另一個角度。"
     $("#wrapper section h2").html(insert);
   }
 	$('.fix-icon a').bind('click', function (event) {
