@@ -146,8 +146,8 @@ h2 img {
 
 h2.fanily-logo {
   width: 172px;
-  height: 66px;
-  padding: 10px 16px;
+  height: 62px;
+  padding: 4px 16px 12px 16px;
   background-color: transparent;
   background-color: rgba(200, 196, 162, 0.72);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#B8C8C4A2,endColorstr=#B8C8C4A2);
@@ -157,10 +157,20 @@ h2.fanily-logo {
   box-shadow: 0 8px 15px 2px #406a5d;
   position: absolute;
 }
+h2.fanily-logo span {
+  position: absolute;
+  top: -3px;
+  right: 0;
+  padding: 3px 6px;
+  line-height: 1;
+  font-size: 12px;
+  background: #406a5d;
+}
 @media only screen and (max-width: 768px) {
   h2.fanily-logo {
     width: 140px;
     height: 54px;
+    padding: 8px 10px;
   }
 }
 @media only screen and (max-width: 480px) {
@@ -186,7 +196,7 @@ h2.fanily-logo {
 #header {
   color: #f3e9df;
   min-height: 500px;
-  background: url('../images/header_bg.jpg?1449642033'), url('../images/header_bg_bottom.jpg?1449642033');
+  background: url('../images/header_bg.jpg?1449719677'), url('../images/header_bg_bottom.jpg?1449719677');
   background-repeat: no-repeat, repeat;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -222,6 +232,11 @@ h2.fanily-logo {
   font-size: 1.75em;
   background: #d34f42;
 }
+#header h3 span.time {
+  font-size: 0.75em;
+  padding: 0 10px;
+  font-weight: normal;
+}
 #header .counter {
   width: 168px;
   height: 175px;
@@ -235,7 +250,7 @@ h2.fanily-logo {
   top: 350px;
   right: 0;
   color: #d34f42;
-  background: url('../images/counter.png?1449642033');
+  background: url('../images/counter.png?1449719677');
   -moz-background-size: cover;
   -o-background-size: cover;
   -webkit-background-size: cover;
@@ -270,6 +285,9 @@ h2.fanily-logo {
   #header h2 {
     font-size: 1.125em;
     letter-spacing: .1em;
+  }
+  #header h3 span {
+    display: block;
   }
   #header .counter {
     top: -58px;
@@ -449,7 +467,7 @@ h2.fanily-logo {
   text-align: center;
   margin-top: -3.6%;
   padding: 80px 0;
-  background: url('../images/link_bg.jpg?1449642033') no-repeat top center;
+  background: url('../images/link_bg.jpg?1449719677') no-repeat top center;
   -moz-background-size: cover;
   -o-background-size: cover;
   -webkit-background-size: cover;
@@ -571,7 +589,7 @@ h2.fanily-logo {
 #speaker {
   text-align: center;
   padding: 80px 0 300px;
-  background: #f3e9df url('../images/bottom_bg.png?1449642033') no-repeat right bottom;
+  background: #f3e9df url('../images/bottom_bg.png?1449719677') no-repeat right bottom;
   -moz-background-size: contain;
   -o-background-size: contain;
   -webkit-background-size: contain;
@@ -597,7 +615,7 @@ h2.fanily-logo {
   *display: inline;
   zoom: 1;
   vertical-align: top;
-  background: url('../images/speaker_card_top.png?1449642033'), url('../images/speaker_card_bottom.png?1449642033');
+  background: url('../images/speaker_card_top.png?1449719677'), url('../images/speaker_card_bottom.png?1449719677');
   background-position: center top, center bottom;
   background-repeat: no-repeat;
 }
