@@ -237,7 +237,7 @@ h2.fanily-logo span {
   padding: 0 10px;
   font-weight: normal;
 }
-#header .counter {
+#header #counter {
   width: 168px;
   height: 175px;
   font-family: 'Oswald';
@@ -255,23 +255,23 @@ h2.fanily-logo span {
   -webkit-background-size: cover;
   background-size: cover;
 }
-#header .counter > span {
+#header #counter > span {
   display: block;
 }
-#header .counter > span:nth-child(1) {
+#header #counter > span:nth-child(1) {
   font-size: 0.8em;
   margin-top: 30px;
 }
-#header .counter > span:nth-child(2) {
+#header #counter > span:nth-child(2) {
   font-size: 2em;
   line-height: 1.25em;
   margin-top: 4px;
 }
-#header .counter > span:nth-child(3) {
+#header #counter > span:nth-child(3) {
   font-size: 0.8em;
   line-height: 1em;
 }
-#header .counter > span:nth-child(3) span {
+#header #counter > span:nth-child(3) span {
   padding: 0 12px;
   margin: 0;
 }

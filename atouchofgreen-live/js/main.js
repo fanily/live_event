@@ -17,11 +17,15 @@ $(function () {
  
 
   //clock event
-  $(".counter").countdown("2015/12/11 14:00" , function(event){
+  $(".counter1211").countdown("2015/12/11 14:00" , function(event){
+    $(this).find("span").eq(1).html(event.strftime('%D-%H:%M:%S'));
+  });
+	
+	$(".counter1213").countdown("2015/12/13 14:00" , function(event){
     $(this).find("span").eq(1).html(event.strftime('%D-%H:%M:%S'));
   });
   
-  $(".counter").on("finish.countdown", function(){
+  $("#counter").on("finish.countdown", function(){
     $(this).hide();
   });
 
