@@ -294,26 +294,26 @@ h2.fanily-logo span {
   #header h3 span {
     display: block;
   }
-  #header .counter {
+  #header #counter {
     top: -58px;
     right: 70px;
     width: 140px;
     height: 146px;
   }
-  #header .counter > span:nth-child(1) {
+  #header #counter > span:nth-child(1) {
     font-size: 0.75em;
     margin-top: 56px;
   }
-  #header .counter > span:nth-child(2) {
+  #header #counter > span:nth-child(2) {
     font-size: 1.5em;
     line-height: 1em;
     margin-top: 0;
   }
-  #header .counter > span:nth-child(3) {
+  #header #counter > span:nth-child(3) {
     font-size: 0.75em;
     line-height: 1em;
   }
-  #header .counter > span:nth-child(3) span {
+  #header #counter > span:nth-child(3) span {
     padding: 0 5px;
     margin: 0;
   }
@@ -334,16 +334,16 @@ h2.fanily-logo span {
     font-size: 1em;
     letter-spacing: 0;
   }
-  #header .counter {
+  #header #counter {
     top: -42px;
     right: 48px;
     width: 120px;
     height: 125px;
   }
-  #header .counter > span:nth-child(1) {
+  #header #counter > span:nth-child(1) {
     margin-top: 40px;
   }
-  #header .counter > span:nth-child(2) {
+  #header #counter > span:nth-child(2) {
     font-size: 1.25em;
   }
 }
