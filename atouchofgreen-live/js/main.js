@@ -28,6 +28,12 @@ $(function () {
   $("#counter").on("finish.countdown", function(){
     $(this).hide();
   });
+  $("#hidden-counter").countdown("2015/12/11 13:50", function(event){
+    $(this).html(event.strftime("%D-%H:%M:%S")); 
+  });
+  $("#hidden-counter").on("finish.countdown", function(){
+    $("iframe").attr("src", "https://www.youtube.com/embed/cmj5a0eBDd8");
+  })
 
 
   $(".social-media li").click(function(){
