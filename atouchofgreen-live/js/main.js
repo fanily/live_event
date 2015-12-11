@@ -18,7 +18,7 @@ $(function () {
 
   //clock event
   $(".counter").countdown("2015/12/11 14:00" , function(event){
-    $(this).find("span").eq(1).html(event.strftime('%D:%H:%M:%S'));
+    $(this).find("span").eq(1).html(event.strftime('%D-%H:%M:%S'));
   });
   
   $(".counter").on("finish.countdown", function(){
