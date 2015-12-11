@@ -32,7 +32,7 @@ $(function () {
     $(this).html(event.strftime("%D-%H:%M:%S")); 
   });
   $("#hidden-counter").on("finish.countdown", function(){
-    $("iframe").attr("src", "https://www.youtube.com/embed/cmj5a0eBDd8");
+    $("iframe").attr("src", "https://www.youtube.com/embed/cmj5a0eBDd8?version=3&enablejsapi=1&autoplay=1&start=600");
   })
 
 
