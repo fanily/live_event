@@ -17,22 +17,18 @@ $(function () {
  
 
   //clock event
-  $(".counter1211").countdown("2015/12/11 14:00" , function(event){
-    $(this).find("span").eq(1).html(event.strftime('%D-%H:%M:%S'));
-  });
-	
-	$(".counter1213").countdown("2015/12/13 14:00" , function(event){
-    $(this).find("span").eq(1).html(event.strftime('%D-%H:%M:%S'));
+  $(".counter1213").countdown(config.live_start_at , function(event){
+    $(this).find("span").eq(1).html(event.strftime(config.time_format));
   });
   
   $("#counter").on("finish.countdown", function(){
     $(this).hide();
   });
-  $("#hidden-counter").countdown("2015/12/11 13:50", function(event){
-    $(this).html(event.strftime("%D-%H:%M:%S")); 
+  $("#hidden-counter").countdown(config.clock_change_at, function(event){
+    $(this).html(event.strftime(config.time_format)); 
   });
   $("#hidden-counter").on("finish.countdown", function(){
-    $("iframe").attr("src", "https://www.youtube.com/embed/cmj5a0eBDd8");
+    $("iframe").attr("src", "https://www.youtube.com/embed/"+ config.online_url);
   })
 
 
