@@ -28,7 +28,7 @@ $(function () {
     $(this).html(event.strftime(config.time_format)); 
   });
   $("#hidden-counter").on("finish.countdown", function(){
-    $("iframe").attr("src", "https://www.youtube.com/embed/"+ config.online_url);
+    $("iframe").attr("src", "https://www.youtube.com/embed/"+ config.online_url + "?version=3&enablejsapi=1&autoplay=1&start=1653");
   })
 
 
