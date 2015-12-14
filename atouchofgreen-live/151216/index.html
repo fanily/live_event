@@ -1,0 +1,222 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+	<title>Live! - Fanily 粉絲玩樂</title>
+	<meta name="keywords" content="Fanily,粉絲玩樂,Fanily粉絲玩樂,偶像劇" />
+	<meta name="description" content="如果你：愛娛樂八卦、愛藝術、愛棒球、愛古裝歷史、愛插畫動漫、愛買東西。來 Fanily 粉絲玩樂 就對了！" />
+	<meta property="og:title" content="Fanily 粉絲玩樂">
+	<meta property="og:url" content="">
+	<meta property="og:type" content="website" />
+	<meta property="og:image" content="">
+	<meta property="og:description" content="如果你：愛娛樂八卦、愛藝術、愛棒球、愛古裝歷史、愛插畫動漫、愛買東西。來 Fanily 粉絲玩樂 就對了！">
+	<meta property="fb:app_id" content="626114784069979" />
+	<meta name="theme-color" content="#FF6E00">
+	<link rel="icon" type="image/png" href="/favicon.ico">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="css/global.css?t=1450110744" />
+	<link rel="stylesheet" type="text/css" href="css/jquery.emojipicker.css">
+	<script type="text/javascript" src="js/jQuery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="js/jquery.emojipicker.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/jquery.emojipicker.a.css">
+	<script type="text/javascript" src="js/jquery.emojipicker.a.js"></script>
+	<!--[if lt IE 9]>
+		<script type="text/javascript" src="js/html5shiv.min.js"></script>
+		<script type="text/javascript" src="js/respond.min.js"></script>
+	<![endif]-->
+	<script type="text/javascript" src="js/config.js"></script>
+	<script type="text/javascript">
+		window.fbAsyncInit = function() {
+			FB.init({
+				appId: config.fb_app_id,
+				cookie: true,
+				status : true,
+				version: 'v2.2'
+			});
+			$(window).trigger('checkLoginState');
+		};
+
+	  (function(d, s, id){
+	  	var js, fjs = d.getElementsByTagName(s)[0];
+	  	if (d.getElementById(id)) {return;}
+	  	js = d.createElement(s); js.id = id;
+	  	js.src = "//connect.facebook.net/zh_TW/sdk.js";
+	  	fjs.parentNode.insertBefore(js, fjs);
+	  }(document, 'script', 'facebook-jssdk'));
+
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  	</script>
+</head>
+<body>
+	<!--nav-->
+	<nav class="navbar navbar-fixed-top nav">
+		<div class="container">
+			<div class="about-us">
+				<button type="button" data-toggle="modal" data-target="#about">
+					<i class="fa fa-home"></i>
+					<span class="hidden-xs">關於我們</span>
+				</button>
+			</div>
+			<div class="main-title">
+				<img src="images/logo.png" alt="Fanily" title="Fanily" class="logo">
+				<h2>Faniy TV <span>live</span></h2>
+			</div>
+			<div class="logout">
+				<a>
+					<img class="avatars img-circle" src="images/avatars.png">
+					<span>登出</span>
+				</a>
+			</div>
+		</div>
+	</nav>
+
+	<div id="main" class="container">
+		<!--main-content-->
+		<div class="row main-content">
+			<!--main-->
+			<div class="col-md-9 main">
+				<!--live-title-->
+				<header class="live-title">
+					<h1></h1>
+					<p></p>
+				</header>
+				<!--video-->
+				<div class="video-container embed-responsive embed-responsive-16by9">
+					<iframe class="embed-responsive-item" src="" frameborder="0" allowfullscreen><div class="video_mask"></div></iframe>
+				</div>
+			</div>
+
+			<!--sider-->
+			<div class="col-md-3 sider">
+				<!--section 1 countdown-->
+				<div class="info-div">
+<script id="template-info" type="x-tmpl-mustache">
+	<h2>{{&title}}</h2>
+	{{^is_end}}
+		<h3>即將於{{&date}}直播</h3>
+		<div class="countdown">
+			<span class="date"><span>天</span><span class="count">00</span></span>
+			<span class="hour"><span>時</span><span class="count">00</span></span>
+			<span class="min"><span>分</span><span class="count">00</span></span>
+			<span class="sec"><span>秒</span><span class="count">00</span></span>
+		</div>
+	{{/is_end}}
+	{{#is_end}}
+		<h3>直播已結束</h3>
+	{{/is_end}}
+	<p>{{&content}}</p>
+	<ul class="social-group">
+		<li class="fb"><i class="fa fa-facebook"></i></li>
+		<li class="twitter"><i class="fa fa-twitter"></i></li>
+		<li class="google-plus"><i class="fa fa-google-plus"></i></li>
+		<li class="weibo"><i class="fa fa-weibo"></i></li>
+	</ul>
+	{{#fanily}}
+		<section>
+			<p>更多精采內容</p>
+			<a href="{{&fanily}}" target="_blank" class="btn btn-lg btn-fanily">Fanily粉絲玩樂</a>
+		</section>
+	{{/fanily}}
+</script>
+				</div>
+				<!--section2 fb login-->
+				<div class="login-form show"><div class="login-form-inner">
+					<p>使用 Facebook 登入<br>加入聊天</p>
+					<div class="fb-login-btn"><i class="fa fa-facebook"></i>登入</div>
+				</div></div>
+				<!--section 3 comment-->
+				<div class="comment">
+					<header class="live-info">
+						<span class="user-btn"><i class="fa fa-user"></i><span class="num">10</span></span>
+						<span class="comment-btn"><i class="fa fa-comment"></i><span class="num">20</span></span>
+					</header>
+					<div class="chat-list">
+						<script id="template-comment-list" type="x-tmpl-mustache">
+							{{#list}}
+							<div class="chat" data-name="{{display_name}}" data-value="{{unixtime}}">
+								<header>
+									<img class="avatars img-circle" src="{{avatars}}">
+									<span class="author">{{display_name}}</span>
+								</header>
+								<section class="content">{{&comment}}</section>
+								<footer class="post-at">
+									<span class="num">{{time}}</span>
+									<span class="unit">分鐘前</span>
+								</footer>
+							</div>
+							{{/list}}
+						</script>
+						<script id="template-new-comment" type="x-tmpl-mustache">
+							<div class="chat" data-name="{{display_name}}" data-value="{{unixtime}}">
+								<header>
+									<img class="avatars img-circle" src="{{avatars}}">
+									<span class="author">{{display_name}}</span>
+								</header>
+								<section class="content">{{&comment}}</section>
+								<footer class="post-at">
+									<span class="num">剛剛</span>
+									<span class="unit"></span>
+								</footer>
+							</div>
+						</script>
+					</div>
+				</div>
+			</div>
+			<!--../sider-->
+		</div>
+		<!--../main-content-->
+		<!--bottom-content-->
+		<div class="row bottom">
+			<div class="col-md-9">
+				<div class="banner">
+					<a href="" target="_blank"><img src="" class="img-responsive"></a>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="add-chat">
+					<div class="input-group">
+						<span class="input-group-addon upload-btn">
+				  			<i class="fa fa-picture-o"></i>
+				  		</span>
+						<span class="input-group-addon emoji-btn">
+							<i class="fa fa-smile-o"></i>
+						</span>
+						<textarea class="form-control add-chat-input" rows="1" placeholder="說點什麼吧！"></textarea>
+						<input type="file" id="add-photo-file">
+						<span class="input-group-addon add-chat-btn">
+				  	<i class="fa fa-paper-plane"></i>
+			      </span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--../bottom-content-->
+	</div>
+
+	<!--modal-->
+	<div class="modal fade" id="about" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span></div>
+				<div class="modal-body">
+					<iframe src="about.html" frameborder="0"></iframe>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<script type="text/javascript" src="js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="js/jquery.countdown.min.js"></script>
+	<script type="text/javascript" src="js/moment.js"></script>
+	<script type="text/javascript" src="js/jquery.textarea_autosize.js"></script>
+	<script type="text/javascript" src="js/mustache.min.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+</body>
+</html>
