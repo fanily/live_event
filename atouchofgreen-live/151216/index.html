@@ -16,6 +16,7 @@
 	<meta name="theme-color" content="#FF6E00">
 	<link rel="icon" type="image/png" href="/favicon.ico">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
 	<link rel="stylesheet" type="text/css" href="css/global.css?t=1450110744" />
 	<link rel="stylesheet" type="text/css" href="css/jquery.emojipicker.css">
@@ -78,14 +79,15 @@
 
 	<div id="main" class="container">
 		<!--main-content-->
-		<div class="row main-content">
+		<!--live-title-->
+		<header class="live-title">
+			<h1></h1>
+			<h2></h2>
+		</header>
+		<div class="main-content">
+
 			<!--main-->
 			<div class="col-md-9 main">
-				<!--live-title-->
-				<header class="live-title">
-					<h1></h1>
-					<h2></h2>
-				</header>
 				<!--video-->
 				<div class="video-container embed-responsive embed-responsive-16by9">
 					<iframe class="embed-responsive-item" src="" frameborder="0" allowfullscreen><div class="video_mask"></div></iframe>
@@ -172,7 +174,7 @@
 		</div>
 		<!--../main-content-->
 		<!--bottom-content-->
-		<div class="row bottom">
+		<div class="bottom">
 			<div class="col-md-9">
 				<div class="banner">
 					<a href="" target="_blank"><img src="" class="img-responsive"></a>
@@ -210,6 +212,7 @@
 			</div>
 		</div>
 	</div>
+
 	<script type="text/javascript" src="js/bootstrap.js"></script>
 	<script type="text/javascript" src="js/jquery.cookie.js"></script>
 	<script type="text/javascript" src="js/jquery.countdown.min.js"></script>
