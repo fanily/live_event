@@ -31,6 +31,9 @@
 	<script type="text/javascript" src="http://live-api.fanily.tw/socket.io/socket.io.js"></script>
 	<script type="text/javascript" src="js/config.js?t=1450242000"></script>
 	<script type="text/javascript">
+		// if (/iPhone/.test(navigator.userAgent)) {
+		// 	alert('小提醒：系統目前不支援 iOS 手機用戶同時收視與群聊。');
+		// }
 	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -111,14 +114,14 @@
 </script>
 				</div>
 				<!--section2 fb login-->
-				<div class="login-form show"><div class="login-form-inner">
+				<div class="login-form"><div class="login-form-inner">
 					<p>首映已經開始<br>趕快登入一起聊天吧</p>
 					<div class="fb-login-btn"><i class="fa fa-facebook"></i>登入</div>
 				</div></div>
 				<!--section 3 comment-->
 				<div class="comment">
 					<header class="live-info">
-						<span class="user-btn"><i class="fa fa-user"></i>上線人數 <span class="num">0</span></span>
+						<!-- <span class="user-btn"><i class="fa fa-user"></i>上線人數 <span class="num">0</span></span> -->
 						<span class="comment-btn"><i class="fa fa-comment"></i>訊息數 <span class="num">0</span></span>
 					</header>
 					<div class="chat-list">
@@ -132,7 +135,6 @@
 								<section class="content">{{&comment}}</section>
 								<footer class="post-at">
 									<span class="num">{{time}}</span>
-									<span class="unit">分鐘前</span>
 								</footer>
 							</div>
 							{{/list}}
