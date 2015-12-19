@@ -24,9 +24,9 @@ $(function () {
   $("#hidden-counter").countdown(config.clock_change_at, function(event){
     $(this).html(event.strftime(config.time_format)); 
   });
-  $("#hidden-counter").on("finish.countdown", function(){
-    $("iframe").attr("src", "https://www.youtube.com/embed/"+ config.promo_url );
-  })
+//  $("#hidden-counter").on("finish.countdown", function(){
+//    $("iframe").attr("src", "https://www.youtube.com/embed/"+ config.promo_url );
+//  })
   $("#counter").on("finish.countdown", function(){
     $(this).hide();
     $("iframe").attr("src", "http://www.youtube.com/embed/" + config.online_url );
