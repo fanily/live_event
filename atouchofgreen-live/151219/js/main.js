@@ -29,7 +29,7 @@ $(function () {
 //  })
   $("#counter").on("finish.countdown", function(){
     $(this).hide();
-    $("iframe").attr("src", "http://www.youtube.com/embed/" + config.online_url );
+    $("iframe").attr("src", "http://www.youtube.com/embed/" + config.online_url + "?start=7794&end=8682&version=3");
   });
 
 
