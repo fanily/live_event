@@ -5,7 +5,7 @@ var config = {
 	fb_app_id : "626114784069979",
 	live : {
 		id : "rHe2xFF5y2s",
-		start_time : "600",
+		start_time : "1952",
 		playlist : "",
 	},
 	api : "http://live-api.ddmay.com",
