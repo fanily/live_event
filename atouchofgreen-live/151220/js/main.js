@@ -23,13 +23,12 @@ $(function () {
   
   $("#counter").on("finish.countdown", function(){
     $(this).hide();
-    $("iframe").attr("src", "https://www.youtube.com/embed/" + config.online_url );
   });
   $("#hidden-counter").countdown(config.clock_change_at, function(event){
     $(this).html(event.strftime(config.time_format)); 
   });
   $("#hidden-counter").on("finish.countdown", function(){
-    $("iframe").attr("src", "https://www.youtube.com/embed/"+ config.promo_url);
+    $("iframe").attr("src", "https://www.youtube.com/embed/"+ config.promo_url + "?start=1235&version=3&autoplay=1");
   })
 
 
