@@ -17,7 +17,7 @@
 	<link rel="icon" type="image/png" href="/favicon.ico">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-	<link rel="stylesheet" type="text/css" href="css/global.css?t=1450708248" />
+	<link rel="stylesheet" type="text/css" href="css/global.css?t=1450708255" />
 	<script type="text/javascript" src="js/jQuery-1.11.3.min.js"></script>
 	<!--[if lt IE 9]>
 		<script type="text/javascript" src="js/html5shiv.min.js"></script>
@@ -37,7 +37,7 @@
 <body>
     <div class="section container top">
         <img src="images/kp_d_s.jpg" alt="深夜柯文哲。夜問新國會 無黨籍中山北松山候選人潘建志" title="深夜柯文哲。夜問新國會 無黨籍中山北松山候選人潘建志" width="1920" height="289" class="img-responsive">
-		<div class="logout">
+        <div class="logout">
 			<img class="avatars img-circle" src="images/avatars.png">
 			<span>登出</span>
 		</div>
@@ -95,7 +95,7 @@
 <script id="template-login-form" type="x-tmpl-mustache">
 	<div class="login-form-inner">
 		<p>深夜咖啡 柯P夜問潘建志<br>邀你一起來夜問</p>
-		<a href="{{login_link}}" class="fb-login-btn">
+		<a href="{{api}}/auth/facebook?redirect_url={{redirect_url}}" class="fb-login-btn">
 			<i class="fa fa-facebook"></i>登入
 		</a>
 	</div>
@@ -105,6 +105,7 @@
 				<div class="comment">
 					<header class="live-info">
 						<span class="user-btn"><i class="fa fa-user"></i>上線人數 <span class="num">0</span></span>
+						<span class="logout">登出</span>
 						<span class="comment-btn"><i class="fa fa-comment"></i>訊息數 <span class="num">0</span></span>
 					</header>
 					<div class="chat-list">
@@ -194,7 +195,7 @@
 	<script type="text/javascript" src="js/moment.js"></script>
 	<script type="text/javascript" src="js/jquery.textarea_autosize.js"></script>
 	<script type="text/javascript" src="js/mustache.min.js"></script>
-	<script type="text/javascript" src="js/functions.js?t=1450708248"></script>
-	<script type="text/javascript" src="js/index.js?t=1450708248"></script>
+	<script type="text/javascript" src="js/functions.js?t=1450709255"></script>
+	<script type="text/javascript" src="js/index.js?t=1450708250"></script>
 </body>
 </html>
