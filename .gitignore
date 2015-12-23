@@ -3,3 +3,4 @@
 fire_app_log.txt
 server.rb
 *.swp
+sftp-config.json
