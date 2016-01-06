@@ -14,22 +14,24 @@ $(function () {
 			event.preventDefault();
 		}
 	});
- 
+
 
   //clock event
   $(".counter1213").countdown(config.live_start_at , function(event){
     $(this).find("span").eq(1).html(event.strftime(config.time_format));
   });
-  
+
   $("#counter").on("finish.countdown", function(){
     $(this).hide();
+    $("iframe").attr("src", "https://www.youtube.com/embed/" + config.online_url );
   });
   $("#hidden-counter").countdown(config.clock_change_at, function(event){
-    $(this).html(event.strftime(config.time_format)); 
+    $(this).html(event.strftime(config.time_format));
   });
   $("#hidden-counter").on("finish.countdown", function(){
-    $("iframe").attr("src", "https://www.youtube.com/embed/"+ config.promo_url + "?start=1235&version=3&autoplay=1");
+    $("iframe").attr("src", "https://www.youtube.com/embed/"+ config.promo_url + '?start=1313&version=3&autoplay=1');
   })
+
 
 
   $(".social-media li").click(function(){
@@ -76,5 +78,5 @@ $(function () {
     ga("send" , "event" , "atouchofgreenLive" , "click" , "middle-official-site");
     ga("atocuhofgreenLive.send" , "event" , "atouchofgreenLive" , "click" , "middle-official-site");
   });
-  
+
 });

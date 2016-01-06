@@ -14,22 +14,21 @@ $(function () {
 			event.preventDefault();
 		}
 	});
- 
 
   //clock event
   $(".counter1213").countdown(config.live_start_at , function(event){
     $(this).find("span").eq(1).html(event.strftime(config.time_format));
   });
-  
-  $("#hidden-counter").countdown(config.clock_change_at, function(event){
-    $(this).html(event.strftime(config.time_format)); 
-  });
-//  $("#hidden-counter").on("finish.countdown", function(){
-//    $("iframe").attr("src", "https://www.youtube.com/embed/"+ config.promo_url );
-//  })
+
   $("#counter").on("finish.countdown", function(){
     $(this).hide();
-    $("iframe").attr("src", "http://www.youtube.com/embed/" + config.online_url + "?start=7794&end=8682&version=3");
+    $("iframe").attr("src", "http://www.youtube.com/embed/" + config.online_url );
+  });
+  $("#hidden-counter").countdown(config.clock_change_at, function(event){
+    $(this).html(event.strftime(config.time_format));
+  });
+  $("#hidden-counter").on("finish.countdown", function(){
+    $("iframe").attr("src", "https://www.youtube.com/embed/"+ config.promo_url + '?start=173&version=3&autoplay=1');
   });
 
 
@@ -77,5 +76,5 @@ $(function () {
     ga("send" , "event" , "atouchofgreenLive" , "click" , "middle-official-site");
     ga("atocuhofgreenLive.send" , "event" , "atouchofgreenLive" , "click" , "middle-official-site");
   });
-  
+
 });
