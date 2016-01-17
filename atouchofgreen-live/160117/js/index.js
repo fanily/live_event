@@ -93,20 +93,11 @@ jQuery(function($){
 			scrollTop: $('.chat-list').prop("scrollHeight")
 		}, 700);
 	});
+
 	$('.chat-list').scroll(function(e){
 		if( $(".chat-list").scrollTop() == 0 ){
 			load_comment_when_scroll($(".chat").first().attr("data-value"));
 		}
-
-		if ($('.chat-list').prop("scrollHeight")-$('.chat-list').scrollTop()-$('.chat-list').innerHeight() == 0) {
-			comment_mode = 'auto';
-			if ($('.comment .show-more').hasClass('show')) {
-				$('.comment .show-more').removeClass('show');
-			}
-		} else {
-			comment_mode = 'read';
-		}
-	});
 
 		if($('.chat-list').prop("scrollHeight") - $('.chat-list').scrollTop() - $('.chat-list').innerHeight() == 0 ) {
 			comment_mode = 'auto';
