@@ -1,6 +1,13 @@
 .DS_Store
-.sass-cache
-fire_app_log.txt
-server.rb
 *.swp
+.sass-cache/
+.sass-cache/
+server.rb
+Gemfile.lock
 sftp-config.json
+fire_app_log.txt
+
+config.rb
+Gemfile
+Rakefile
+scss/
