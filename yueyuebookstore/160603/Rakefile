@@ -1,0 +1,18 @@
+require 'uglifier'
+
+task :default => [:test]
+
+task :test do
+  # npm install uglify-js -g
+  #sh "uglifyjs config.js"
+  #puts Uglifier.new(:output => {:ascii_only => false} ,:mangle => false).compile(File.read("config.js"))
+  Dir.glob('./js/*.js') do |inputFile|
+    if File.extname(inputFile) == ".js"
+      File.open(inputFile, "w") do |outputFile|
+        puts "compress #{inputFile}"
+        outputFile.write(Uglifier.new(:output => {:ascii_only => false} ,:mangle => false).compile(File.read(inputFile)))
+      end
+    end
+  end
+end
+
