@@ -4,14 +4,14 @@ jQuery(function($){
 	var end_time = moment(config.end_time).format("X");
 	var close_time = moment(config.close_time).format("X");
 
-	if(typeof($.cookie('live-token')) !== 'undefined' && now <= close_time){
-		ajax_login($.cookie('live-token'), 'autologin');
-	}
+	// if(typeof($.cookie('live-token')) !== 'undefined' && now <= close_time){
+	// 	ajax_login($.cookie('live-token'), 'autologin');
+	// }
 
 	//init
 	getLiveArticle();
 	getLoginForm();
-	getCommentNum();
+	// getCommentNum();
 	getComment();
 
 	if (now < start_time) {
@@ -64,9 +64,9 @@ jQuery(function($){
 			$(this).css("pointer-events", "none");
 			$('.add-chat-input').prop('disabled', true);
 
-			socket.emit('new message', {
-				"message" : comment
-			});
+			// socket.emit('new message', {
+			// 	"message" : comment
+			// });
 
 			appendComment({
 				is_img : false,
@@ -155,35 +155,35 @@ jQuery(function($){
 		$.removeCookie('live-token');
 		$.removeCookie('live-fid');
 		$.removeCookie('live-uid');
-		socket.emit('user left');
+		// socket.emit('user left');
 
 		var user_num = parseInt($('.user-btn .num').text(), 10);
 		$('.user-btn .num').text(user_num - 1);
 	});
 
 	//接收 server 丟出來的 event
-	socket.on('numUsers', function(output){
-		if (output.numUsers == 0 && typeof($.cookie('live-token')) !== 'undefined') {
-			$(".live-info .user-btn .num").text(1);
-		} else {
-			$(".live-info .user-btn .num").text(output.numUsers);
-		}
-	});
-	socket.on('new message', function(output){
-		appendComment({
-			is_img : output.message.isImg,
-			uid : output.user.uid,
-			display_name : output.user.display_name,
-			time : moment().format("X"),
-			message : output.message.message
-		}, 'server');
-	});
-	socket.on('user joined', function(output){
-		$(".live-info .user-btn .num").text(output.numUsers);
-	});
-	socket.on('user left', function(output){
-		$(".live-info .user-btn .num").text(output.numUsers);
-	});
+	// socket.on('numUsers', function(output){
+	// 	if (output.numUsers == 0 && typeof($.cookie('live-token')) !== 'undefined') {
+	// 		$(".live-info .user-btn .num").text(1);
+	// 	} else {
+	// 		$(".live-info .user-btn .num").text(output.numUsers);
+	// 	}
+	// });
+	// socket.on('new message', function(output){
+	// 	appendComment({
+	// 		is_img : output.message.isImg,
+	// 		uid : output.user.uid,
+	// 		display_name : output.user.display_name,
+	// 		time : moment().format("X"),
+	// 		message : output.message.message
+	// 	}, 'server');
+	// });
+	// socket.on('user joined', function(output){
+	// 	$(".live-info .user-btn .num").text(output.numUsers);
+	// });
+	// socket.on('user left', function(output){
+	// 	$(".live-info .user-btn .num").text(output.numUsers);
+	// });
 
 	//上傳圖片
 	$('.upload-btn').click(function(e){
@@ -246,10 +246,10 @@ jQuery(function($){
 			message : url
 		  }, 'client');
 
-		  socket.emit('new message', {
-			"message" : url,
-			"isImg" : true
-		  });
+		  // socket.emit('new message', {
+		  //       "message" : url,
+		  //       "isImg" : true
+		  // });
 		}).fail(fail);
 	  }).fail(fail);
 	  return false;
