@@ -1,0 +1,22 @@
+[
+  {
+    "id": 2,
+    "user_id": 9134,
+    "provider": "FB",
+    "uid": "126943094369559",
+    "display_name": "Yue Yue",
+    "message": "http://shoppin...chan=read0617",
+    "image": "",
+    "timestamp": "2016-06-17T11:50:29.000Z"
+  },
+  {
+    "id": 1,
+    "user_id": 9134,
+    "provider": "FB",
+    "uid": "126943094369559",
+    "display_name": "Yue Yue",
+    "message": "http://shoppin...chan=read0617",
+    "image": "",
+    "timestamp": "2016-06-17T11:40:32.000Z"
+  }
+]
