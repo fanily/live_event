@@ -197,7 +197,7 @@ var load_comment_when_scroll = function(timestamp){
   	if(output.length > 0) {
 	  	var data = [];
 		var moderator_lists = [];
-		
+
 		output.reverse();
 		$.each(output, function(key, row) {
 			var post_time = moment.utc(row.timestamp).local().format("X");
@@ -239,20 +239,22 @@ var load_comment_when_scroll = function(timestamp){
 }
 
 var getComment = function(timestamp) {
-	var url = config.api +"/chatlog";
-	if(timestamp !== '') {
-		url += '?timestamp='+timestamp;
-	}
+	// var url = config.api +"/chatlog";
+	// if(timestamp !== '') {
+	// 	url += '?timestamp='+timestamp;
+	// }
 
 	$.ajax({
 		type: "GET",
-		url: url,
+		url: "comment.json",
 		dataType: 'json'
 	}).done(function(output) {
 		if ($.isEmptyObject(output)) {
 			return ;
 		}
-		
+
+		$(".live-info .comment-btn .num").text(output.length);
+
 		var data = [];
 		var moderator_lists = [];
 		output.reverse();
