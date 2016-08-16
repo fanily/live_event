@@ -29,12 +29,12 @@ var config = {
 		{
 			"title" : "策展人",
 			"name" : "方序中",
-			"avatars" : "images/guests-1.jpg"
+			"avatars" : "images/guests-1.jpg?v=1"
 		},
 		{
 			"title" : "設計師",
 			"name" : "小子",
-			"avatars" : "images/guests-2.jpg?v=1"
+			"avatars" : "images/guests-2.jpg?v=2"
 		}
 	],
 	login_title : [
