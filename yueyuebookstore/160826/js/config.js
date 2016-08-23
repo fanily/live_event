@@ -36,13 +36,13 @@ var config = {
 	},
 	cast : [
 		{
-			"title" : "策展人",
-			"name" : "風尚旅行社總經理 游智維",
+			"title" : "策展人 風尚旅行社總經理",
+			"name" : "游智維",
 			"avatars" : "images/guests-1.jpg"
 		},
 		{
-			"title" : "講者",
-			"name" : "設計師 吳東龍",
+			"title" : "講者 設計師",
+			"name" : "吳東龍",
 			"avatars" : "images/guests-2.jpg?v=1"
 		}
 	],
