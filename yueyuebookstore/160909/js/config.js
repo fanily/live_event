@@ -4,7 +4,7 @@ var config = {
 	close_time : "2016-09-09 21:30:00",
 	fb_app_id : "626114784069979",
 	live : {
-		id : "bash_history",
+		id : "rKu2tmUiZgU",
 		start_time : "",
 		playlist : "",
 	},
