@@ -27,6 +27,11 @@ var config = {
 	},
 	cast : [
 		{
+			"title" : "策展人",
+			"name" : "黃韋嘉 Lyo",
+			"avatars" : "images/guests-1.jpg?v=2"
+		},
+		{
 			"title" : "演出樂團",
 			"name" : "女爵・騎士",
 			"avatars" : "images/guests-2.jpg?v=1"
