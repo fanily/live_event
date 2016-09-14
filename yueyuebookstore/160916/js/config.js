@@ -34,7 +34,7 @@ var config = {
 		{
 			"title" : "演出樂團",
 			"name" : "小山郁美爵士三重奏",
-			"avatars" : "images/guests-2.jpg?v=1"
+			"avatars" : "images/guests-2.jpg?v=2"
 		}
 	],
 	login_title : [
