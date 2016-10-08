@@ -1,6 +1,3 @@
-// var socket = io.connect(config.api_socket);
-// socket.emit('get numUsers');
-
 var comment_mode = "auto";
 var unread_comment = 0;
 
@@ -361,12 +358,6 @@ var ajax_login = function(accessToken, type) {
 	}).done(function(data) {
 		$('.fb-login-btn').html('<i class="fa fa-facebook"></i>登入');
 		var avatars = 'https://graph.facebook.com/' + data.uid + '/picture?width=50';
-		// socket.emit('add user', {
-		// 	"provider": "FB",
-		// 	"id": data.id,
-		// 	"uid": data.uid,
-		// 	"display_name": data.display_name
-		// });
 
 		if (now > start_time && now < close_time) {
 			$('.add-chat').addClass('show');
